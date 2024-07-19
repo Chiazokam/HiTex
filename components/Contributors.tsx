@@ -23,15 +23,21 @@ const contributors = [
   }
 ]
 
-const Contributors = () => {
+type ContributorsProps = {
+  className?: string
+}
+
+const Contributors = ({ className }: ContributorsProps) => {
    return (
-    <AvatarGroup size='xs' max={3}>
-      <Avatar name='Ciara Noon' src='' />
-      <Avatar name='Salazar Troop' src='' />
-      <Avatar name='Bandit Crimes' src='https://bit.ly/kent-c-dodds' />
-      <Avatar name='Malay Bangrof' src='' />
-      <Avatar name='Mulan Azxeimer' src='https://bit.ly/ryan-florence' />
-    </AvatarGroup>
+    <div className={className}>
+      <AvatarGroup size='xs' max={2} spacing="-0.3rem">
+        <Avatar name='Ciara Noon' src='' />
+        <Avatar name='Salazar Troop' src='' />
+        <Avatar name='Bandit Crimes' src='https://bit.ly/kent-c-dodds' />
+        <Avatar name='Malay Bangrof' src='' />
+        <Avatar name='Mulan Azxeimer' src='https://bit.ly/ryan-florence' />
+      </AvatarGroup>
+    </div>
     );
 }
 
