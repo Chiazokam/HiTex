@@ -1,7 +1,11 @@
-import Tiptap from '../components/Tiptap'
+import Tiptap from '@/components/Tiptap'
+import Header from '@/components/Header';
 
 export default function Home() {
   return (
-    <Tiptap />
+    <>
+      <Header />
+      <Tiptap />
+    </>
   );
 }
