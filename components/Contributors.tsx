@@ -1,13 +1,12 @@
 'use client'
 
-import { Avatar, AvatarGroup, Tooltip } from '@chakra-ui/react'
+import { Avatar, Tooltip } from '@mantine/core'
 import React from 'react'
-import UserAvatar from '@/components/UserAvatar'
 
 const contributors = [
   {
     name: "Ciara Noon",
-    image: "",
+    image: "https://bit.ly/kent-c-dodds",
   },
   {
     name: "Salazar Troop",
@@ -17,7 +16,7 @@ const contributors = [
   },
   {
     name: "Bandit Crimes",
-    image: "",
+    image: "https://bit.ly/ryan-florence",
     initials: "BC",
     color: "lime"
   }
@@ -30,13 +29,15 @@ type ContributorsProps = {
 const Contributors = ({ className }: ContributorsProps) => {
    return (
     <div className={className}>
-      <AvatarGroup size='xs' max={2} spacing="-0.3rem">
-        <Avatar name='Ciara Noon' src='' />
-        <Avatar name='Salazar Troop' src='' />
-        <Avatar name='Bandit Crimes' src='https://bit.ly/kent-c-dodds' />
-        <Avatar name='Malay Bangrof' src='' />
-        <Avatar name='Mulan Azxeimer' src='https://bit.ly/ryan-florence' />
-      </AvatarGroup>
+       <Tooltip.Group openDelay={300} closeDelay={100}>
+        <Avatar.Group spacing="sm">
+          {contributors.map(contributor => (
+            <Tooltip key={contributor.name}  label={contributor.name} withArrow>
+              <Avatar size={34} src={contributor.image} />
+            </Tooltip>
+            ))}
+        </Avatar.Group>
+       </Tooltip.Group>
     </div>
     );
 }

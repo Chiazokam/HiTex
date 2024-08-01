@@ -1,16 +1,15 @@
 'use client'
 
-import { Avatar, AvatarBadge, AvatarGroup } from '@chakra-ui/react'
+import { Avatar } from '@mantine/core'
 import React from 'react'
 
 type UserAvatarProps = {
     image: string
-    name: string
 }
 
-const UserAvatar = ({ image, name }: UserAvatarProps) => {
+const UserAvatar = ({ image }: UserAvatarProps) => {
    return (
-    <Avatar src={image} name={name} size="xs" />
+    <Avatar src={image} size={34} />
   );
 }
 

@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import '@mantine/core/styles.css';
 import { Providers } from '@/app/providers'
+import { ColorSchemeScript } from '@mantine/core'
 
 export const metadata: Metadata = {
   title: "HiTex",
@@ -14,7 +16,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <head><meta name="viewport" content="width=device-width, initial-scale=1.0"/></head>
+      <head><meta name="viewport" content="width=device-width, initial-scale=1.0"/><ColorSchemeScript /></head>
       <body>
         <Providers>
           {children}

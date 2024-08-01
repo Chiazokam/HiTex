@@ -1,15 +1,16 @@
 'use client'
 
-import ListItem from '@tiptap/extension-list-item'
-import OrderedList from '@tiptap/extension-ordered-list'
-import BulletList from '@tiptap/extension-bullet-list'
+import { type Editor as EditorType } from "@tiptap/react";
+import React from 'react'
+
 import TextStyle from '@tiptap/extension-text-style'
 import Highlight from '@tiptap/extension-highlight'
 import TextAlign from '@tiptap/extension-text-align'
-import { EditorContent, useEditor } from '@tiptap/react'
+import { EditorContent, useEditor, BubbleMenu } from '@tiptap/react'
 import StarterKit from '@tiptap/starter-kit'
+import Underline from '@tiptap/extension-underline'
+
 import Toolbar from '@/components/Toolbar'
-import React from 'react'
 
 const content = `
 <h2>
@@ -64,27 +65,29 @@ const content = `
 `
 
 const Editor = () => {
-  const editor = useEditor({
-    extensions: [
-      StarterKit,
-      TextAlign.configure({
-        types: ['heading', 'paragraph'],
-      }),
-      Highlight,
-      ListItem,
-      BulletList,
-      OrderedList,
-      TextStyle.configure(),
-    ],
-    content
-  })
+
+    const editor = useEditor({
+        extensions: [
+          StarterKit,
+          TextAlign.configure({
+            types: ['heading', 'paragraph'],
+          }),
+          Highlight,
+          Underline,
+          TextStyle.configure(),
+        ],
+        content,
+        immediatelyRender: false
+      })
+      
   return (
-    <div className='h-screen overflow-scroll'>
-      <Toolbar editor={editor} />
-      <EditorContent editor={editor} />
-    </div>
+    <>
+    {editor && <BubbleMenu editor={editor} >
+        <Toolbar editor={editor} />
+      </BubbleMenu>}
+        <EditorContent editor={editor} className='p-20 focus:outline-none' />
+    </>
   )
 }
-
 
 export default Editor

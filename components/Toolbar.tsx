@@ -1,5 +1,7 @@
 import clsx from 'clsx';
 import { type Editor } from "@tiptap/react";
+import { Bold, Italic, Strikethrough, Code, List, ListOrdered, Underline, Link } from 'lucide-react';
+import { TextLevels } from '@/components/TextLevels';
 
 type ToolbarProps = {
     editor: Editor | null
@@ -12,7 +14,7 @@ const Toolbar = ({ editor }: ToolbarProps) => {
     }
   
     return (
-        <div className="flex flex-wrap gap-2 mb-4">
+        <div className="flex w-fit gap-4 items-center mb-4 border-solid border border-gray-100 bg-white shadow-lg px-3 py-2 rounded-md">
             <button
             onClick={() => editor.chain().focus().toggleBold().run()}
             disabled={
@@ -22,9 +24,9 @@ const Toolbar = ({ editor }: ToolbarProps) => {
                 .toggleBold()
                 .run()
             }
-            className={clsx('border rounded-3xl px-2 text-xs', editor.isActive('bold') && 'border-blue-200 bg-blue-200 text-slate-600')}
+            className={clsx('px-1 py-1', editor.isActive('bold') && 'rounded bg-gray-400 text-white')}
             >
-            Bold
+            <Bold className='w-3 h-3' />
             </button>
             <button
             onClick={() => editor.chain().focus().toggleItalic().run()}
@@ -35,9 +37,15 @@ const Toolbar = ({ editor }: ToolbarProps) => {
                 .toggleItalic()
                 .run()
             }
-            className={clsx('border rounded-3xl px-2 text-xs', editor.isActive('italic') && 'border-blue-200 bg-blue-200 text-slate-600')}
+            className={clsx('px-1 py-1', editor.isActive('italic') && 'rounded bg-gray-400 text-white')}
             >
-            Italic
+            <Italic className='w-3 h-3' />
+            </button>
+            <button
+                onClick={() => editor.chain().focus().toggleUnderline().run()}
+                className={clsx('px-1 py-1', editor.isActive('underline') && 'rounded bg-gray-400 text-white')}
+            >
+                <Underline className='w-3 h-3' />
             </button>
             <button
             onClick={() => editor.chain().focus().toggleStrike().run()}
@@ -48,9 +56,9 @@ const Toolbar = ({ editor }: ToolbarProps) => {
                 .toggleStrike()
                 .run()
             }
-            className={clsx('border rounded-3xl px-2 text-xs', editor.isActive('strike') && 'border-blue-200 bg-blue-200 text-slate-600')}
+            className={clsx('px-1 py-1', editor.isActive('strike') && 'rounded bg-gray-400 text-white')}
             >
-            Strike
+            <Strikethrough className='w-3 h-3' />
             </button>
             <button
             onClick={() => editor.chain().focus().toggleCode().run()}
@@ -61,75 +69,28 @@ const Toolbar = ({ editor }: ToolbarProps) => {
                 .toggleCode()
                 .run()
             }
-            className={clsx('border rounded-3xl px-2 text-xs', editor.isActive('code') && 'border-blue-200 bg-blue-200 text-slate-600')}
+            className={clsx('px-1 py-1', editor.isActive('code') && 'rounded bg-gray-400 text-white')}
             >
-            Code
+            <Code className='w-3 h-3' />
+            </button>
+            <TextLevels editor={editor} />
+            <button
+                onClick={() => editor.chain().focus().toggleBulletList().run()}
+                className={clsx('px-1 py-1', editor.isActive('bulletList') && 'rounded bg-gray-400 text-white')}
+            >
+                <List className='w-3 h-3' />
             </button>
             <button
-            onClick={() => editor.chain().focus().setParagraph().run()}
-            className={clsx('border rounded-3xl px-2 text-xs', editor.isActive('paragraph') && 'border-blue-200 bg-blue-200 text-slate-600')}
+                onClick={() => editor.chain().focus().toggleOrderedList().run()}
+                className={clsx('px-1 py-1', editor.isActive('orderedList') && 'rounded bg-gray-400 text-white')}
             >
-            Paragraph
+                <ListOrdered className='w-3 h-3' />
             </button>
             <button
-            onClick={() => editor.chain().focus().toggleHeading({ level: 1 }).run()}
-            className={clsx('border rounded-3xl px-2 text-xs', editor.isActive('heading', { level: 1 }) && 'border-blue-200 bg-blue-200 text-slate-600')}
+                onClick={() => editor.chain().focus().toggleOrderedList().run()}
+                className={clsx('px-1 py-1', editor.isActive('orderedList') && 'rounded bg-gray-400 text-white')}
             >
-            H1
-            </button>
-            <button
-            onClick={() => editor.chain().focus().toggleHeading({ level: 2 }).run()}
-            className={clsx('border rounded-3xl px-2 text-xs', editor.isActive('heading', { level: 2 }) && 'border-blue-200 bg-blue-200 text-slate-600')}
-            >
-            H2
-            </button>
-            <button
-            onClick={() => editor.chain().focus().toggleHeading({ level: 3 }).run()}
-            className={clsx('border rounded-3xl px-2 text-xs', editor.isActive('heading', { level: 3 }) && 'border-blue-200 bg-blue-200 text-slate-600')}
-            >
-            H3
-            </button>
-            <button
-            onClick={() => editor.chain().focus().toggleHeading({ level: 4 }).run()}
-            className={clsx('border rounded-3xl px-2 text-xs', editor.isActive('heading', { level: 4 }) && 'border-blue-200 bg-blue-200 text-slate-600')}
-            >
-            H4
-            </button>
-            <button
-            onClick={() => editor.chain().focus().toggleHeading({ level: 5 }).run()}
-            className={clsx('border rounded-3xl px-2 text-xs', editor.isActive('heading', { levele: 5 }) && 'border-blue-200 bg-blue-200 text-slate-600')}
-            >
-            H5
-            </button>
-            <button
-            onClick={() => editor.chain().focus().toggleHeading({ level: 6 }).run()}
-            className={clsx('border rounded-3xl px-2 text-xs', editor.isActive('heading', { level: 6 }) && 'border-blue-200 bg-blue-200 text-slate-600')}
-            >
-            H6
-            </button>
-            <button
-            onClick={() => editor.chain().focus().toggleBulletList().run()}
-            className={clsx('border rounded-3xl px-2 text-xs', editor.isActive('bulletList') && 'border-blue-200 bg-blue-200 text-slate-600')}
-            >
-            Bullet list
-            </button>
-            <button
-            onClick={() => editor.chain().focus().toggleOrderedList().run()}
-            className={clsx('border rounded-3xl px-2 text-xs', editor.isActive('orderedList') && 'border-blue-200 bg-blue-200 text-slate-600')}
-            >
-            Ordered list
-            </button>
-            <button
-            onClick={() => editor.chain().focus().toggleCodeBlock().run()}
-            className={clsx('border rounded-3xl px-2 text-xs', editor.isActive('codeBlock') && 'border-blue-200 bg-blue-200 text-slate-600')}
-            >
-            Code block
-            </button>
-            <button
-            onClick={() => editor.chain().focus().toggleBlockquote().run()}
-            className={clsx('border rounded-3xl px-2 text-xs', editor.isActive('blockquote') && 'border-blue-200 bg-blue-200 text-slate-600')}
-            >
-            Blockquote
+                <Link className='w-3 h-3' />
             </button>
         </div>
     )
