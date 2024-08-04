@@ -6,7 +6,7 @@ import UserAvatar from '@/components/UserAvatar';
 
 const Header = () => {
     return (
-        <div className='flex border-b fixed z-100 top-0 w-full border-gray-100 py-5 px-12 bg-white justify-between'>
+        <header className='flex border-b fixed z-2 top-0 w-full border-gray-100 py-5 px-12 bg-white justify-between h-[64px]'>
             <div className='flex gap-3 items-center'>
                 <div className='border rounded-full bg-red-100 p-1 border-red-100'>
                     <FileText size={16} color='#BF6388' />
@@ -25,7 +25,7 @@ const Header = () => {
                     <UserAvatar image='' />
                 </div>
             </div>
-        </div>
+        </header>
     )
 }
 

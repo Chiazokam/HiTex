@@ -2,11 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
-/* :root {
+:root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
-} */
+}
 
 /* @media (prefers-color-scheme: dark) {
   :root {
@@ -121,4 +121,8 @@ body {
     border-top: 1px solid var(--gray-2);
     margin: 2rem 0;
   }
+}
+
+.tiptap.ProseMirror.ProseMirror-focused {
+  outline: none !important;
 }

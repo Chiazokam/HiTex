@@ -1,6 +1,5 @@
 'use client'
 
-import { type Editor as EditorType } from "@tiptap/react";
 import React from 'react'
 
 import TextStyle from '@tiptap/extension-text-style'
@@ -82,10 +81,11 @@ const Editor = () => {
       
   return (
     <>
-    {editor && <BubbleMenu editor={editor} >
+    {editor && 
+      <BubbleMenu editor={editor} >
         <Toolbar editor={editor} />
       </BubbleMenu>}
-        <EditorContent editor={editor} className='p-20 focus:outline-none' />
+        <EditorContent editor={editor} className='' />
     </>
   )
 }
