@@ -5,11 +5,12 @@ import React from 'react'
 
 type UserAvatarProps = {
     image: string
+    name: string
 }
 
-const UserAvatar = ({ image }: UserAvatarProps) => {
+const UserAvatar = ({ image, name }: UserAvatarProps) => {
    return (
-    <Avatar src={image} size={34} />
+    <Avatar src={image} name={name} color='initials' size={34} />
   );
 }
 
