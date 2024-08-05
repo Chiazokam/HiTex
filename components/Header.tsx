@@ -17,12 +17,12 @@ const Header = () => {
             <div className='flex gap-3 items-center'>
                 <Contributors className='hidden md:flex' />
                 <Divider orientation="vertical" className='hidden md:flex' />
-                <Button size='sm' className='hidden md:flex'>Share</Button>
+                <Button size='sm' color='blue.5' className='hidden md:flex'>Share</Button>
                 <div className='border rounded py-1.5 px-1 cursor-pointer border-gray-200'>
                     <EllipsisVertical size={15} />
                 </div>
                 <div className='cursor-pointer'>
-                    <UserAvatar image='' />
+                    <UserAvatar image='' name='Dylan Mirror' />
                 </div>
             </div>
         </header>
