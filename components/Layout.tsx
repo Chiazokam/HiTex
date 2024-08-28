@@ -15,7 +15,6 @@ const Layout = () => {
                 <AuthorBox />
                 <Editor />
             </div>
-            {/* <Editor /> */}
         </div>
     )
 }

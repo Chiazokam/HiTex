@@ -8,7 +8,7 @@ type MobileNavProps = {
 
 const MobileNav = ({ editor }: MobileNavProps) => {
     return (
-        <div className="px-8 fixed overflow-x-auto flex h-14 bottom-0 bg-white w-full border-gray-600 shadow-lg sm:hidden">
+        <div className="px-8 left-0 fixed overflow-x-auto flex h-14 bottom-0 bg-white w-full border-gray-600 shadow-lg sm:hidden">
             < Toolbar editor={editor} />
         </div>
     )
