@@ -9,7 +9,9 @@ import { EditorContent, useEditor, BubbleMenu } from '@tiptap/react'
 import StarterKit from '@tiptap/starter-kit'
 import Underline from '@tiptap/extension-underline'
 
+import AuthorBox from '@/components/AuthorBox';
 import Toolbar from '@/components/Toolbar'
+import MobileNav from '@/components/MobileNav';
 
 const content = `
 <p>
@@ -79,10 +81,16 @@ const Editor = () => {
   return (
     <>
     {editor && 
-      <BubbleMenu editor={editor} >
-        <Toolbar editor={editor} />
+      <BubbleMenu editor={editor} className='border-solid border border-gray-100 bg-white shadow-lg px-3 py-0.5 rounded-md'>
+        <Toolbar editor={editor}/>
       </BubbleMenu>}
+
+      <div className='mt-[64px] px-8 md:px-36 lg:px-60 xl:px-96 py-12 overflow-scroll'>
+        <AuthorBox />
         <EditorContent editor={editor} className='' />
+      </div>
+
+      <MobileNav editor={editor} />
     </>
   )
 }

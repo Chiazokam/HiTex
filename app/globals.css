@@ -32,10 +32,15 @@ body {
   }
 }
 
+.tippy-box {
+  max-width: 800px !important;
+}
+
 .tiptap {
   :first-child {
     margin-top: 0;
   }
+
 
   /* List styles */
   ul, 

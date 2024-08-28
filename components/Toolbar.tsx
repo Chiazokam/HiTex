@@ -14,7 +14,7 @@ const Toolbar = ({ editor }: ToolbarProps) => {
     }
   
     return (
-        <div className="flex w-fit gap-4 items-center mb-4 border-solid border border-gray-100 bg-white shadow-lg px-3 py-2 rounded-md">
+        <div className="flex gap-4 items-center w-full">
             <button
             onClick={() => editor.chain().focus().toggleBold().run()}
             disabled={
