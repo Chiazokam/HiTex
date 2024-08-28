@@ -36,6 +36,8 @@ export const TextLevels = ({ editor }: TextLevelsProps) => {
         return null
     }
 
+  type Level = 1 | 2 | 3 | 4 | 5 | 6
+
   return (
     <Combobox
       store={combobox}
@@ -46,7 +48,7 @@ export const TextLevels = ({ editor }: TextLevelsProps) => {
         if (value === 'paragraph') {
             editor.chain().focus().setParagraph().run()
         } else {
-            editor.chain().focus().toggleHeading({ level: Number(value.substring(1))}).run()
+            editor.chain().focus().toggleHeading({ level: Number(value.substring(1)) as Level}).run()
         }
         combobox.closeDropdown();
       }}
