@@ -85,10 +85,11 @@ const Editor = () => {
         <Toolbar editor={editor}/>
       </BubbleMenu>}
 
-      <div className='mt-[64px] px-8 md:px-36 lg:px-60 xl:px-96 py-12 overflow-scroll'>
+        <EditorContent editor={editor} />
+        {/* <div className='mt-[64px] px-8 md:px-36 lg:px-60 xl:px-96 py-12 overflow-y-auto bg-red-300'>
         <AuthorBox />
-        <EditorContent editor={editor} className='' />
-      </div>
+        <EditorContent editor={editor} />
+      </div> */}
 
       <MobileNav editor={editor} />
     </>
