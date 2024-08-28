@@ -73,20 +73,20 @@ export class TodoList extends Model({
 //   })
 // }
 
-export function createRootStore(): TodoList {
-//   const rootStore = createDefaultTodoList()
+// export function createRootStore(): TodoList {
+// //   const rootStore = createDefaultTodoList()
 
-  // although not strictly required, it is always a good idea to register your root stores
-  // as such, since this allows the model hook `onAttachedToRootStore` to work and other goodies
-  registerRootStore(rootStore)
+//   // although not strictly required, it is always a good idea to register your root stores
+//   // as such, since this allows the model hook `onAttachedToRootStore` to work and other goodies
+//   registerRootStore(rootStore)
 
-  // we can also connect the store to the redux dev tools
-  const remotedev = require("remotedev")
-  const connection = remotedev.connectViaExtension({
-    name: "Todo List Example",
-  })
+//   // we can also connect the store to the redux dev tools
+//   const remotedev = require("remotedev")
+//   const connection = remotedev.connectViaExtension({
+//     name: "Todo List Example",
+//   })
 
-  connectReduxDevTools(remotedev, connection, rootStore)
+//   connectReduxDevTools(remotedev, connection, rootStore)
 
-  return rootStore
-}
+//   return rootStore
+// }

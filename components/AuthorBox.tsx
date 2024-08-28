@@ -1,6 +1,5 @@
 import React from "react";
 import UserAvatar from "@/components/UserAvatar";
-import getUserInitials from "@/lib/getUserInitials";
 
 const AuthorBox = () => {
     return (
