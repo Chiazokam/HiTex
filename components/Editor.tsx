@@ -9,9 +9,7 @@ import { EditorContent, useEditor, BubbleMenu } from '@tiptap/react'
 import StarterKit from '@tiptap/starter-kit'
 import Underline from '@tiptap/extension-underline'
 
-import AuthorBox from '@/components/AuthorBox';
 import Toolbar from '@/components/Toolbar'
-import MobileNav from '@/components/MobileNav';
 
 const content = `
 <p>
@@ -86,7 +84,6 @@ const Editor = () => {
       </BubbleMenu>}
 
       <EditorContent editor={editor} />
-      <MobileNav editor={editor} />
     </>
   )
 }
