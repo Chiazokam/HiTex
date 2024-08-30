@@ -4,7 +4,7 @@ import React from 'react'
 
 import TextStyle from '@tiptap/extension-text-style'
 import BulletList from '@tiptap/extension-bullet-list'
-import Paragraph from '@tiptap/extension-paragraph'
+import Link from '@tiptap/extension-link'
 import ListItem from '@tiptap/extension-list-item'
 import Highlight from '@tiptap/extension-highlight'
 import TextAlign from '@tiptap/extension-text-align'
@@ -12,7 +12,7 @@ import { EditorContent, useEditor, BubbleMenu } from '@tiptap/react'
 import StarterKit from '@tiptap/starter-kit'
 import Underline from '@tiptap/extension-underline'
 
-import Toolbar from '@/components/Toolbar'
+import Toolbar from '@/components/Toolbar/Toolbar'
 
 const content = `
 <p>
@@ -76,6 +76,11 @@ const Editor = () => {
             types: ['heading', 'paragraph'],
           }),
           TextStyle.configure(),
+          Link.configure({
+            openOnClick: true,
+            // autolink: true,
+            defaultProtocol: 'https',
+          }),
         ],
         content,
         immediatelyRender: false
