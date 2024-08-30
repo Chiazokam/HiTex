@@ -3,9 +3,10 @@
 @tailwind utilities;
 
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+  --foreground-rgb: #000000;
+  --background-start-rgb: rgb(214, 219, 220);
+  --background-end-rgb: #ffffff;
+  --gray-3: rgb(228, 233, 239);
 }
 
 /* @media (prefers-color-scheme: dark) {
@@ -16,7 +17,7 @@
   }
 } */
 
-body {
+/* body {
   color: rgb(var(--foreground-rgb));
   background: linear-gradient(
       to bottom,
@@ -24,7 +25,7 @@ body {
       rgb(var(--background-end-rgb))
     )
     rgb(var(--background-start-rgb));
-}
+} */
 
 @layer utilities {
   .text-balance {
@@ -36,22 +37,36 @@ body {
   max-width: 800px !important;
 }
 
-.tiptap {
+/* .tiptap { */
   :first-child {
     margin-top: 0;
   }
 
 
   /* List styles */
-  ul, 
-  ol {
+  .tiptap>ul, 
+  .tiptap>ol {
     padding: 0 1rem;
     margin: 1.25rem 1rem 1.25rem 0.4rem;
     
-    li p {
-      margin-top: 0.25em;
-      margin-bottom: 0.25em;
-    }
+  }
+
+  ol {
+    list-style: decimal;
+  }
+
+  ol li::marker {
+    font-size: 14px;
+  }
+
+  ul {
+    list-style: disc;
+  }
+
+  ul li p,
+  ol li p {
+    margin-top: 0.25em;
+    margin-bottom: 0.25em;
   }
 
   /* Heading styles */
@@ -91,34 +106,35 @@ body {
   }
 
   /* Code and preformatted text styles */
+
+  blockquote {
+    border-left: 3px solid var(--gray-3);
+    margin: 2rem 0;
+    padding-left: 1rem;
+  }
+
   code {
     background-color: var(--purple-light);
     border-radius: 0.4rem;
-    color: var(--black);
+    color: var(--foreground-rgb);
     font-size: 0.85rem;
     padding: 0.25em 0.3em;
   }
 
   pre {
-    background: var(--black);
+    background: var(--foreground-rgb);
     border-radius: 0.5rem;
-    color: var(--white);
+    color: var(--background-end-rgb);
     font-family: 'JetBrainsMono', monospace;
     margin: 1.5rem 0;
     padding: 0.75rem 1rem;
-
-    code {
-      background: none;
-      color: inherit;
-      font-size: 0.8rem;
-      padding: 0;
-    }
   }
-
-  blockquote {
-    border-left: 3px solid var(--gray-3);
-    margin: 1.5rem 0;
-    padding-left: 1rem;
+  
+  pre>code {
+    background: none;
+    color: inherit;
+    font-size: 0.8rem;
+    padding: 0;
   }
 
   hr {
@@ -126,7 +142,7 @@ body {
     border-top: 1px solid var(--gray-2);
     margin: 2rem 0;
   }
-}
+/* } */
 
 .tiptap.ProseMirror.ProseMirror-focused {
   outline: none !important;
