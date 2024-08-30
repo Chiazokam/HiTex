@@ -3,6 +3,9 @@
 import React from 'react'
 
 import TextStyle from '@tiptap/extension-text-style'
+import BulletList from '@tiptap/extension-bullet-list'
+import Paragraph from '@tiptap/extension-paragraph'
+import ListItem from '@tiptap/extension-list-item'
 import Highlight from '@tiptap/extension-highlight'
 import TextAlign from '@tiptap/extension-text-align'
 import { EditorContent, useEditor, BubbleMenu } from '@tiptap/react'
@@ -13,7 +16,7 @@ import Toolbar from '@/components/Toolbar'
 
 const content = `
 <p>
-  this is a <em>basic</em> example of <strong>Tiptap</strong>. Sure, there are all kind of basic text styles you’d probably expect from a text editor. But wait until you see the lists:
+  This is a <em>basic</em> example of <strong>Tiptap</strong>. Sure, there are all kind of basic text styles you’d probably expect from a text editor. But wait until you see the lists:
 </p>
 <ul>
   <li>
@@ -65,11 +68,13 @@ const Editor = () => {
     const editor = useEditor({
         extensions: [
           StarterKit,
+          BulletList,
+          ListItem,
+          Highlight,
+          Underline,
           TextAlign.configure({
             types: ['heading', 'paragraph'],
           }),
-          Highlight,
-          Underline,
           TextStyle.configure(),
         ],
         content,

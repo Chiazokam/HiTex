@@ -1,6 +1,6 @@
 import clsx from 'clsx';
 import { type Editor } from "@tiptap/react";
-import { Bold, Italic, Strikethrough, Code, List, ListOrdered, Underline, Link } from 'lucide-react';
+import { Bold, Italic, Strikethrough, Code, List, ListOrdered, Underline, Link, TextQuote, SquareCode } from 'lucide-react';
 import { TextLevels } from '@/components/TextLevels';
 
 type ToolbarProps = {
@@ -86,6 +86,21 @@ const Toolbar = ({ editor }: ToolbarProps) => {
             >
                 <ListOrdered className='w-3 h-3' />
             </button>
+
+            <button
+                onClick={() => editor.chain().focus().toggleCodeBlock().run()}
+                className={clsx('px-1 py-1', editor.isActive('codeBlock') && 'rounded bg-gray-400 text-white')}
+                >
+                <SquareCode className='w-3 h-3' />
+            </button>
+
+            <button
+                onClick={() => editor.chain().focus().toggleBlockquote().run()}
+                className={clsx('px-1 py-1', editor.isActive('blockquote') && 'rounded bg-gray-400 text-white')}
+                >
+                <TextQuote className='w-3 h-3' />
+            </button>
+
             <button
                 onClick={() => editor.chain().focus().toggleOrderedList().run()}
                 className={clsx('px-1 py-1', editor.isActive('orderedList') && 'rounded bg-gray-400 text-white')}
