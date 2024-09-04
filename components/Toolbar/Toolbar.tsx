@@ -1,13 +1,16 @@
+import { useState } from 'react'
 import clsx from 'clsx';
 import { type Editor } from "@tiptap/react";
-import { Bold, Italic, Strikethrough, Code, List, ListOrdered, Underline, Link, TextQuote, SquareCode } from 'lucide-react';
+import { Bold, Italic, Strikethrough, Code, List, ListOrdered, Underline, TextQuote, SquareCode } from 'lucide-react';
 import { TextLevels } from '@/components/TextLevels';
+import { LinkButton } from '@/components/Toolbar/LinkButton';
 
 type ToolbarProps = {
     editor: Editor | null
 }
 
 const Toolbar = ({ editor }: ToolbarProps) => {
+    const [] = useState(false)
 
     if (!editor) {
       return null
@@ -101,12 +104,7 @@ const Toolbar = ({ editor }: ToolbarProps) => {
                 <TextQuote className='w-3 h-3' />
             </button>
 
-            <button
-                onClick={() => editor.chain().focus().toggleOrderedList().run()}
-                className={clsx('px-1 py-1', editor.isActive('orderedList') && 'rounded bg-gray-400 text-white')}
-            >
-                <Link className='w-3 h-3' />
-            </button>
+            <LinkButton editor={editor} />
         </div>
     )
   }
