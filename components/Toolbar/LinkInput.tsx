@@ -19,14 +19,17 @@ export const LinkInput = ({ onLink }: { onLink(url: string): void }) => {
             <Formik
                 validationSchema={validationSchema}
                 initialValues={{ url: '' }}
-                onSubmit={({ url }) => onLink(url)}
+                onSubmit={({ url }) => {
+                    onLink(url)
+                    // close toolbar here
+                }}
             >
                 {({ handleSubmit, handleChange, handleBlur, errors }) => (
                     <form onSubmit={handleSubmit} className="p-2">
                         <TextInput
                             type="text"
                             name="url"
-                            placeholder="Enter or paste a link"
+                            placeholder="Input a link and press Enter"
                             data-cy="link-input"
                             onChange={handleChange}
                             onBlur={handleBlur}

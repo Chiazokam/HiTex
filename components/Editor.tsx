@@ -78,7 +78,6 @@ const Editor = () => {
           TextStyle.configure(),
           Link.configure({
             openOnClick: true,
-            // autolink: true,
             defaultProtocol: 'https',
           }),
         ],
