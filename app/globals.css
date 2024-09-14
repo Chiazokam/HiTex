@@ -7,8 +7,8 @@
   --background-start-rgb: rgb(214, 219, 220);
   --background-end-rgb: #ffffff;
   --gray-3: rgb(228, 233, 239);
-  --blue: rgb(0, 0, 238);
-  --blue-contrast: rgb(69, 69, 225);
+  --blue: rgb(69, 69, 225);
+  --blue-contrast: rgb(0, 0, 238);
 }
 
 /* @media (prefers-color-scheme: dark) {
