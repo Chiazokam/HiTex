@@ -11,7 +11,7 @@ const validationSchema = yup.object().shape({
         .min(5, 'Too Short')
 })
 
-export const LinkInput = ({ onLink }: { onLink(url: string): void }) => {
+export const LinkInput = ({ onLink, setOpened }: { onLink(url: string): void; setOpened: (opened:boolean) => void }) => {
     const ref = useRef<HTMLElement>(null)
 
     return (
@@ -21,7 +21,7 @@ export const LinkInput = ({ onLink }: { onLink(url: string): void }) => {
                 initialValues={{ url: '' }}
                 onSubmit={({ url }) => {
                     onLink(url)
-                    // close toolbar here
+                    setOpened(false)
                 }}
             >
                 {({ handleSubmit, handleChange, handleBlur, errors }) => (
