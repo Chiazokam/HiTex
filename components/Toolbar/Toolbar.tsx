@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import clsx from 'clsx';
 import { type Editor } from "@tiptap/react";
-import { Bold, Italic, Strikethrough, Code, List, ListOrdered, Underline, TextQuote, SquareCode } from 'lucide-react';
+import { Bold, Italic, Strikethrough, Code, List, ListOrdered, Underline, TextQuote, SquareCode } from '@/components/Icons';
 import { TextLevels } from '@/components/TextLevels';
 import { LinkButton } from '@/components/Toolbar/LinkButton';
 

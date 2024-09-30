@@ -1,0 +1,57 @@
+import { useFormik } from 'formik'
+import { useState } from 'react';
+import * as yup from 'yup'
+import { Select, SelectProps } from '@mantine/core'
+import { Globe, Lock, ChevronDown } from '@/components/Icons';
+
+type AccessOptionsSelectProps = {
+    // opened: boolean
+    // close: () => void
+}
+
+const AccessOptionsSelect = ({ }: AccessOptionsSelectProps) => {
+    const [value, setValue] = useState<string | null>('restricted');
+
+    const icons: Record<string, React.ReactNode> = {
+        public: <Globe className='w-3 h-3 text-zinc-700' />,
+        restricted: <Lock className='w-3 h-3 text-zinc-700' />
+    }
+
+    const subLabels: Record<string, string> = {
+        public: 'Anyone with the link can access',
+        restricted: 'Only people invited can access'
+    }
+
+    const RenderOption: SelectProps['renderOption'] = ({ option, checked }) => {
+        return (
+            <div className='flex items-center gap-2'>
+                <div className=''>{icons[option.value]}</div>
+                <div className='flex flex-col'>
+                    <span className='text-zinc-700 text-sm'>{option.label}</span>
+                    <span className='text-xs text-zinc-500'>{subLabels[option.value]}</span>
+                </div>
+            </div>
+        )
+    }
+    
+    return (
+   
+        <Select
+            classNames={{
+                wrapper: 'w-64',
+                input: '!border-zinc-100 !rounded-full text-sm !text-zinc-700 hover:!bg-zinc-50'
+            }}
+            value={value}
+            onChange={(value) => setValue(value)}
+            data={[
+                { value: 'public', label: 'Anyone with the link' },
+                { value: 'restricted', label: 'Restricted' }
+              ]}
+            leftSection={icons[value || 'restricted']}
+            rightSection={<ChevronDown className='w-4 h-4 text-zinc-700' />}
+            renderOption={RenderOption}
+        />
+    )
+}
+
+export default AccessOptionsSelect

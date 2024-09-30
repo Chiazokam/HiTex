@@ -1,7 +1,7 @@
 import { Editor } from '@tiptap/react'
 import { Popover } from '@mantine/core'
 import clsx from 'clsx';
-import { Link } from 'lucide-react';
+import { Link } from '@/components/Icons';
 import { LinkInput } from '@/components/Toolbar/LinkInput';
 import { useState } from 'react';
 
