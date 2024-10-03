@@ -1,13 +1,15 @@
 import { useFormik } from 'formik'
-import { useState } from 'react';
+import { useState } from 'react'
+import { usePathname } from 'next/navigation'
 import * as yup from 'yup'
-import { TextInput, Dialog, Button, TagsInput, Divider, Select } from '@mantine/core'
-import { isEmailValid } from '@/lib/isEmailValid'
+import { Dialog, Button, TagsInput, Divider } from '@mantine/core'
+import { isEmailValid } from '@/lib/utils/isEmailValid'
 import AccessOptionsSelect from './AccessOptionsSelect'
-import { Link, ChevronDown } from '@/components/Icons';
-import UserAvatar from '@/components/UserAvatar';
+import { LinkIcon } from '@/components/Icons';
 import InvitedPeople from './InvitedPeople';
-import { access } from 'fs';
+import showSuccessNotification from '@/lib/utils/notifications/showSuccessNotification'
+import { showNotification } from '@mantine/notifications'
+import { CheckCircleIcon } from '@/components/Icons'
 
 type ShareDocumentProps = {
     opened: boolean
@@ -17,6 +19,7 @@ type ShareDocumentProps = {
 const ShareDocument = ({ opened, close }: ShareDocumentProps) => {
     const [value, setValue] = useState<string[]>([]);
     const [error, setError] = useState<string>('')
+    const pathname = usePathname()
 
     const setEmailValues = (values: string[]) => {
         if (isEmailValid(values[values.length - 1])) {
@@ -31,25 +34,38 @@ const ShareDocument = ({ opened, close }: ShareDocumentProps) => {
         console.log(value, '<======')
     }
 
-    enum AccessType {
-        Owner = 'Owner',
-        Viewer = 'Viewer', 
-        Reviewer = 'Reviewer',
-        Editor = 'Editor',
-        CoOwner = 'Co-owner'
-    }
+    // enum AccessType {
+    //     Owner = 'Owner',
+    //     Viewer = 'Viewer', 
+    //     Reviewer = 'Reviewer',
+    //     Editor = 'Editor',
+    //     CoOwner = 'Co-owner'
+    // }
 
     const people = [
-        { id: 1, email: 'miracle@choplife.com', access: AccessType.Owner },
-        { id: 2, email: 'owen@choplife.com', access: AccessType.Viewer },
-        { id: 3, email: 'newdawn@choplife.com', access: AccessType.CoOwner }
+        { id: 1, email: 'miracle@choplife.com', access: 'owner' },
+        { id: 2, email: 'owen@choplife.com', access:'viewer' },
+        { id: 3, email: 'newdawn@choplife.com', access: 'co-owner' },
+        // { id: 4, email: 'newdawn@choplife.com', access: 'reviewer' },
+        // { id: 5, email: 'newdawn@choplife.com', access: 'editor' },
+        // { id: 6, email: 'newdawn@choplife.com', access: 'co-owner' },
+        // { id: 7, email: 'newdawn@choplife.com', access: 'co-owner' },
+        // { id: 8, email: 'newdawn@choplife.com', access: 'co-owner' },
+        // { id: 9, email: 'newdawn@choplife.com', access: 'co-owner' },
+        // { id: 10, email: 'newdawn@choplife.com', access: 'co-owner' },
     ]
+
+    const copyToClipboard = () => {
+        const path = `${process.env.NEXT_PUBLIC_BASE_PATH}${pathname}`
+        navigator.clipboard.writeText(path)
+        showSuccessNotification({ message: 'Copied to clipboard' })
+    }
     
     return (
         <Dialog
             opened={opened}
             classNames={{
-                root: '!w-[450px] !px-0'
+                root: '!w-[450px] !px-0 !max-h-[120] relative',
             }}
             onClose={close}
             position={{ top: 80, right: 15 }}
@@ -73,23 +89,29 @@ const ShareDocument = ({ opened, close }: ShareDocumentProps) => {
 
                 </div>
 
-                <div className='flex flex-col gap-4 px-4'>
+                <div className='flex flex-col gap-4 px-4 pb-9'>
                     <span className='text-xs text-zinc-700'>People with access</span>
-
-                    {people.map((person) => <InvitedPeople key={person.id} person={person} />)}
-                </div>
-
-
-                <Divider orientation='horizontal' className='!border-slate-100' />
-
-                <div className='flex px-4 justify-between items-center'>
-                    <AccessOptionsSelect />
-                    <div className='flex items-center gap-2 hover:bg-zinc-50 cursor-pointer px-2 rounded-md h-5'>
-                        <Link className='w-3 h-3 text-zinc-400' />
-                        <span className='text-sm text-zinc-700'>Copy link</span>
+                    <div className='max-h-64 overflow-y-auto flex flex-col gap-4 pb-4'>
+                        {people.map((person) => <InvitedPeople key={person.id} person={person} />)}
                     </div>
                 </div>
+
             </div>
+                <div className='fixed w-full bg-white bottom-0'>
+
+                    <Divider orientation='horizontal' className='!border-slate-100' />
+
+                    <div className='flex px-4 py-2 justify-between items-center'>
+                        <AccessOptionsSelect />
+                        <button
+                            className='flex items-center gap-2 hover:bg-zinc-50 cursor-pointer px-2 rounded-md h-5'
+                            onClick={copyToClipboard}
+                        >
+                            <LinkIcon className='w-3 h-3 text-zinc-400' />
+                            <span className='text-sm text-zinc-700'>Copy link</span>
+                        </button>
+                    </div>
+                </div>
       </Dialog>
     )
 }

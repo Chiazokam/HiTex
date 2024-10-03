@@ -2,7 +2,7 @@ import { useFormik } from 'formik'
 import { useState } from 'react';
 import * as yup from 'yup'
 import { Select, SelectProps } from '@mantine/core'
-import { Globe, Lock, ChevronDown } from '@/components/Icons';
+import { GlobeAltIcon, LockClosedIcon, ChevronDownIcon } from '@/components/Icons';
 
 type AccessOptionsSelectProps = {
     // opened: boolean
@@ -13,12 +13,12 @@ const AccessOptionsSelect = ({ }: AccessOptionsSelectProps) => {
     const [value, setValue] = useState<string | null>('restricted');
 
     const icons: Record<string, React.ReactNode> = {
-        public: <Globe className='w-3 h-3 text-zinc-700' />,
-        restricted: <Lock className='w-3 h-3 text-zinc-700' />
+        public: <GlobeAltIcon className='w-4 h-4 text-zinc-700' />,
+        restricted: <LockClosedIcon className='w-4 h-4 text-zinc-700' />
     }
 
     const subLabels: Record<string, string> = {
-        public: 'Anyone with the link can access',
+        public: 'Anyone with the link can view',
         restricted: 'Only people invited can access'
     }
 
@@ -48,7 +48,7 @@ const AccessOptionsSelect = ({ }: AccessOptionsSelectProps) => {
                 { value: 'restricted', label: 'Restricted' }
               ]}
             leftSection={icons[value || 'restricted']}
-            rightSection={<ChevronDown className='w-4 h-4 text-zinc-700' />}
+            rightSection={<ChevronDownIcon className='w-3 h-3 text-zinc-700' />}
             renderOption={RenderOption}
         />
     )

@@ -1,7 +1,7 @@
 import { TextInput } from '@mantine/core'
 import { Formik } from 'formik'
 import * as yup from 'yup'
-import { URL_REGEX } from '@/lib/urlRegex'
+import { URL_REGEX } from '@/lib/utils/urlRegex'
 
 const validationSchema = yup.object().shape({
     url: yup

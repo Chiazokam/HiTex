@@ -2,6 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
+/* @layer tailwind {
+  @tailwind base;
+} */
+
+/* @import '@mantine/core/styles.css';÷ */
+
+
 :root {
   --foreground-rgb: #000000;
   --background-start-rgb: rgb(214, 219, 220);
@@ -9,6 +16,7 @@
   --gray-3: rgb(228, 233, 239);
   --blue: rgb(69, 69, 225);
   --blue-contrast: rgb(0, 0, 238);
+  --notificstion-color: #f912f9;
 }
 
 /* @media (prefers-color-scheme: dark) {

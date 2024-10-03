@@ -1,5 +1,5 @@
 import { useCallback, useState } from 'react'
-import { isTextSelected } from '@/lib/isTextSelected'
+import { isTextSelected } from '@/lib/utils/isTextSelected'
 import { type Editor } from "@tiptap/react";
 import { ShouldShowProps } from '@/lib/types';
 

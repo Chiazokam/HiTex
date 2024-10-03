@@ -1,1 +1,1 @@
-export * from 'lucide-react'
+export * from '@heroicons/react/24/outline'

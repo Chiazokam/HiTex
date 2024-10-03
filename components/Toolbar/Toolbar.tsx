@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import clsx from 'clsx';
 import { type Editor } from "@tiptap/react";
-import { Bold, Italic, Strikethrough, Code, List, ListOrdered, Underline, TextQuote, SquareCode } from '@/components/Icons';
+import { BoldIcon, ItalicIcon, StrikethroughIcon, CodeBracketIcon, ListBulletIcon, NumberedListIcon, UnderlineIcon, CodeBracketSquareIcon } from '@/components/Icons';
 import { TextLevels } from '@/components/TextLevels';
 import { LinkButton } from '@/components/Toolbar/LinkButton';
 
@@ -29,7 +29,7 @@ const Toolbar = ({ editor }: ToolbarProps) => {
             }
             className={clsx('px-1 py-1', editor.isActive('bold') && 'rounded bg-gray-400 text-white')}
             >
-            <Bold className='w-3 h-3' />
+            <BoldIcon className='w-3 h-3' />
             </button>
             <button
             onClick={() => editor.chain().focus().toggleItalic().run()}
@@ -42,13 +42,13 @@ const Toolbar = ({ editor }: ToolbarProps) => {
             }
             className={clsx('px-1 py-1', editor.isActive('italic') && 'rounded bg-gray-400 text-white')}
             >
-            <Italic className='w-3 h-3' />
+            <ItalicIcon className='w-3 h-3' />
             </button>
             <button
                 onClick={() => editor.chain().focus().toggleUnderline().run()}
                 className={clsx('px-1 py-1', editor.isActive('underline') && 'rounded bg-gray-400 text-white')}
             >
-                <Underline className='w-3 h-3' />
+                <UnderlineIcon className='w-3 h-3' />
             </button>
             <button
             onClick={() => editor.chain().focus().toggleStrike().run()}
@@ -61,7 +61,7 @@ const Toolbar = ({ editor }: ToolbarProps) => {
             }
             className={clsx('px-1 py-1', editor.isActive('strike') && 'rounded bg-gray-400 text-white')}
             >
-            <Strikethrough className='w-3 h-3' />
+            <StrikethroughIcon className='w-3 h-3' />
             </button>
             <button
             onClick={() => editor.chain().focus().toggleCode().run()}
@@ -74,35 +74,35 @@ const Toolbar = ({ editor }: ToolbarProps) => {
             }
             className={clsx('px-1 py-1', editor.isActive('code') && 'rounded bg-gray-400 text-white')}
             >
-            <Code className='w-3 h-3' />
+            <CodeBracketIcon className='w-3 h-3' />
             </button>
             <TextLevels editor={editor} />
             <button
                 onClick={() => editor.chain().focus().toggleBulletList().run()}
                 className={clsx('px-1 py-1', editor.isActive('bulletList') && 'rounded bg-gray-400 text-white')}
             >
-                <List className='w-3 h-3' />
+                <ListBulletIcon className='w-3 h-3' />
             </button>
             <button
                 onClick={() => editor.chain().focus().toggleOrderedList().run()}
                 className={clsx('px-1 py-1', editor.isActive('orderedList') && 'rounded bg-gray-400 text-white')}
             >
-                <ListOrdered className='w-3 h-3' />
+                <NumberedListIcon className='w-3 h-3' />
             </button>
 
             <button
                 onClick={() => editor.chain().focus().toggleCodeBlock().run()}
                 className={clsx('px-1 py-1', editor.isActive('codeBlock') && 'rounded bg-gray-400 text-white')}
                 >
-                <SquareCode className='w-3 h-3' />
+                <CodeBracketSquareIcon className='w-3 h-3' />
             </button>
 
-            <button
+            {/* <button
                 onClick={() => editor.chain().focus().toggleBlockquote().run()}
                 className={clsx('px-1 py-1', editor.isActive('blockquote') && 'rounded bg-gray-400 text-white')}
                 >
                 <TextQuote className='w-3 h-3' />
-            </button>
+            </button> */}
 
             <LinkButton editor={editor} />
         </div>

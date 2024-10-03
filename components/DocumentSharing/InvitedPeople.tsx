@@ -1,22 +1,16 @@
 import { useState } from 'react';
-import { ChevronDown } from '@/components/Icons';
+import { ChevronDownIcon } from '@/components/Icons';
 import UserAvatar from '@/components/UserAvatar';
 import { Select } from '@mantine/core'
 // import { AccessType } from '@/lib/types';
 
-enum AccessType {
-    Owner = 'Owner',
-    Viewer = 'Viewer', 
-    Reviewer = 'Reviewer',
-    Editor = 'Editor',
-    CoOwner = 'Co-owner'
-}
 
 type Props = {
     person: {
         id: number
         email: string
-        access: AccessType
+        // access: 'owner' | 'viewer' | 'reviewer' | 'editor' | 'co-owner'
+        access: string
     }
 }
 
@@ -30,15 +24,16 @@ const InvitedPeople = ({ person: { id, email, access} }: Props) => {
                 <span className='text-sm text-zinc-700'>{email}</span>
             </div>
 
+            {/* show owner, and then co-owners at the top of the list */}
             {value === 'owner' ? 
-                <span className='border border-zinc-100 rounded-full text-sm text-zinc-700 px-4 py-2'>
+                <span className='border border-zinc-100 rounded-full text-xs text-zinc-700 px-4 py-2'>
                     Owner
                 </span> :
                 <Select
                     withCheckIcon={false}
                     classNames={{
                         wrapper: 'max-w-28 w-auto',
-                        input: '!border-zinc-100 !rounded-full text-sm !text-zinc-700 hover:!bg-zinc-50'
+                        input: '!border-zinc-100 !rounded-full !text-xs !text-zinc-700 hover:!bg-zinc-50'
                     }}
                     value={value}
                     onChange={(value) => setValue(value)}
@@ -46,9 +41,9 @@ const InvitedPeople = ({ person: { id, email, access} }: Props) => {
                         { value: 'viewer', label: 'Viewer' },
                         { value: 'reviewer', label: 'Reviewer' },
                         { value: 'editor', label: 'Editor' },
-                        { value: 'co-owner', label: 'Co-owner' }, // show co-owner option ONLY if the user is owner
+                        { value: 'co-owner', label: 'Co-owner' },
                     ]}
-                    rightSection={<ChevronDown className='w-4 h-4 text-zinc-700' />}
+                    rightSection={<ChevronDownIcon className='w-3 h-3 text-zinc-700' />}
                 />
             }
         </div>

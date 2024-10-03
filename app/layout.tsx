@@ -1,6 +1,7 @@
-import type { Metadata } from "next";
-import "./globals.css";
-import '@mantine/core/styles.css';
+import type { Metadata } from "next"
+import '@mantine/core/styles.css'
+import '@mantine/notifications/styles.css'
+import "./globals.css"
 import { Providers } from '@/app/providers'
 import { ColorSchemeScript } from '@mantine/core'
 
