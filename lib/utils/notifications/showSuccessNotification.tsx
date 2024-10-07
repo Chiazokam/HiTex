@@ -14,7 +14,6 @@ const showSuccessNotification = ({ title, message }: Props) => {
         message,
         classNames: {
           icon: 'h-12 w-12 !text-green-600 !bg-green-50 rounded-md rounded-lg',
-          root: 'bg-red-400'
       }
       })
 }

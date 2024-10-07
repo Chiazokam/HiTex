@@ -4,7 +4,7 @@ import { Notifications } from '@mantine/notifications'
 export function Providers({ children }: { children: React.ReactNode }) {
   return (
       <MantineProvider>
-        <Notifications position="top-center"  autoClose={false} />
+        <Notifications position="bottom-center"  autoClose={5000} />
         {children}
       </MantineProvider>
   )

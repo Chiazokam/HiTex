@@ -8,7 +8,7 @@ import AccessOptionsSelect from './AccessOptionsSelect'
 import { LinkIcon } from '@/components/Icons';
 import InvitedPeople from './InvitedPeople';
 import showSuccessNotification from '@/lib/utils/notifications/showSuccessNotification'
-import { showNotification } from '@mantine/notifications'
+import showErrorNotification from '@/lib/utils/notifications/showErrorNotification'
 import { CheckCircleIcon } from '@/components/Icons'
 
 type ShareDocumentProps = {
@@ -19,6 +19,7 @@ type ShareDocumentProps = {
 const ShareDocument = ({ opened, close }: ShareDocumentProps) => {
     const [value, setValue] = useState<string[]>([]);
     const [error, setError] = useState<string>('')
+    const [loading, setLoading] = useState<boolean>(false)
     const pathname = usePathname()
 
     const setEmailValues = (values: string[]) => {
@@ -30,8 +31,19 @@ const ShareDocument = ({ opened, close }: ShareDocumentProps) => {
         }
     }
 
-    const handleSubmit = () => {
-        console.log(value, '<======')
+    const handleSubmit = async () => {
+        setLoading(true)
+        const data = await fetch("/api/email", {
+            method: "POST",
+            // body: JSON.stringify(),
+          });
+        if (data.status === 200) {
+            setLoading(false)
+            showSuccessNotification({ message: 'Invitation Sent' })
+        } else {
+            setLoading(false)
+            showErrorNotification({ message: 'Invitation not sent. Please try again later' })
+        }
     }
 
     // enum AccessType {
@@ -76,7 +88,6 @@ const ShareDocument = ({ opened, close }: ShareDocumentProps) => {
                         placeholder={!value ? "Single email or several, separated by commas" : ""}
                         classNames={{
                             root: 'w-[350px]',
-                            // input: '!border-2 !border-gray-50 !focus:border-blue-200 !focus:border-2',
                         }}
                         value={value}
                         onChange={(evt) => setEmailValues(evt)}
@@ -85,7 +96,7 @@ const ShareDocument = ({ opened, close }: ShareDocumentProps) => {
                         data={['flint@curry.com', 'madea@full.com', 'neo@gator.com']}
                     />
 
-                    <Button onClick={() => handleSubmit()} color='blue.5'>Invite</Button>
+                    <Button loading={loading} onClick={() => handleSubmit()} color='blue.5'>Invite</Button>
 
                 </div>
 
