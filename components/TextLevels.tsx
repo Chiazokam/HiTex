@@ -3,7 +3,7 @@
 import { type Editor } from "@tiptap/react";
 import { useState } from 'react';
 import { Combobox, InputBase, useCombobox } from '@mantine/core';
-import { ChevronDown } from 'lucide-react';
+import { ChevronDownIcon } from '@/components/Icons';
 
 type TextLevelsProps = {
     editor: Editor | null
@@ -62,7 +62,7 @@ export const TextLevels = ({ editor }: TextLevelsProps) => {
             input: '!border-0',
             root: 'w-[120px]',
           }}
-          rightSection={<ChevronDown className='w-3 h-3' />}
+          rightSection={<ChevronDownIcon className='w-3 h-3' />}
           onClick={() => combobox.toggleDropdown()}
           rightSectionPointerEvents="none"
         >

@@ -1,7 +1,7 @@
 import { Editor } from '@tiptap/react'
 import { Popover } from '@mantine/core'
 import clsx from 'clsx';
-import { Link } from 'lucide-react';
+import { LinkIcon } from '@/components/Icons';
 import { LinkInput } from '@/components/Toolbar/LinkInput';
 import { useState } from 'react';
 
@@ -29,7 +29,7 @@ export const LinkButton = ({ editor }: LinkButtonProps) => {
                     className={clsx('px-1 py-1', editor.isActive('orderedList') && 'rounded bg-gray-400 text-white')}
                     onClick={() => setOpened(!opened)}
                 >
-                    <Link className='w-3 h-3' />
+                    <LinkIcon className='w-3 h-3' />
                 </button>
             </Popover.Target>
             <Popover.Dropdown>

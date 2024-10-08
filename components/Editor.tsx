@@ -5,7 +5,7 @@ import React from 'react'
 import TextStyle from '@tiptap/extension-text-style'
 import BulletList from '@tiptap/extension-bullet-list'
 import Link from '@tiptap/extension-link'
-import ListItem from '@tiptap/extension-list-item'
+// import ListItem from '@tiptap/extension-list-item'
 import Highlight from '@tiptap/extension-highlight'
 import TextAlign from '@tiptap/extension-text-align'
 import { EditorContent, useEditor, BubbleMenu } from '@tiptap/react'
@@ -69,7 +69,7 @@ const Editor = () => {
         extensions: [
           StarterKit,
           BulletList,
-          ListItem,
+          // ListItem,
           Highlight,
           Underline,
           TextAlign.configure({
