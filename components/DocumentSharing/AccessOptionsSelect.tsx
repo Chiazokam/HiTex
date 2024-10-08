@@ -1,15 +1,9 @@
-import { useFormik } from 'formik'
 import { useState } from 'react';
 import * as yup from 'yup'
 import { Select, SelectProps } from '@mantine/core'
 import { GlobeAltIcon, LockClosedIcon, ChevronDownIcon } from '@/components/Icons';
 
-type AccessOptionsSelectProps = {
-    // opened: boolean
-    // close: () => void
-}
-
-const AccessOptionsSelect = ({ }: AccessOptionsSelectProps) => {
+const AccessOptionsSelect = () => {
     const [value, setValue] = useState<string | null>('restricted');
 
     const icons: Record<string, React.ReactNode> = {

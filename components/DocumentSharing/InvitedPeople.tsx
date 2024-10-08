@@ -20,7 +20,7 @@ const InvitedPeople = ({ person: { id, email, access} }: Props) => {
     return (
         <div className='flex items-center justify-between'>
             <div className='flex items-center gap-2'>
-                <UserAvatar image="" name={email.substring(0, email.lastIndexOf("@"))} />
+                <UserAvatar image="" name={email} />
                 <span className='text-sm text-zinc-700'>{email}</span>
             </div>
 
