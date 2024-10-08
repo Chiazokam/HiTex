@@ -17,14 +17,15 @@ type ShareDocumentProps = {
 }
 
 const ShareDocument = ({ opened, close }: ShareDocumentProps) => {
-    const [value, setValue] = useState<string[]>([]);
+    const [guestEmails, setGuestEmails] = useState<string[]>([]);
     const [error, setError] = useState<string>('')
     const [loading, setLoading] = useState<boolean>(false)
     const pathname = usePathname()
+    const docPath = `${process.env.NEXT_PUBLIC_BASE_PATH}${pathname}`
 
     const setEmailValues = (values: string[]) => {
         if (isEmailValid(values[values.length - 1])) {
-            setValue([...values])
+            setGuestEmails([...values])
             setError('')
         } else {
             setError('Invalid email')
@@ -33,9 +34,16 @@ const ShareDocument = ({ opened, close }: ShareDocumentProps) => {
 
     const handleSubmit = async () => {
         setLoading(true)
+
         const data = await fetch("/api/email", {
             method: "POST",
-            // body: JSON.stringify(),
+            body: JSON.stringify({
+                docTitle: 'Seven FundamentalDesign Principles', // get from doc store
+                ownerUsername: 'Dylan', // get from auth store
+                ownerEmail: 'dylan@mirror.com', // get from auth store
+                guestEmails: guestEmails,
+                inviteLink: navigator.clipboard.writeText(docPath)
+            }),
           });
         if (data.status === 200) {
             setLoading(false)
@@ -58,18 +66,17 @@ const ShareDocument = ({ opened, close }: ShareDocumentProps) => {
         { id: 1, email: 'miracle@choplife.com', access: 'owner' },
         { id: 2, email: 'owen@choplife.com', access:'viewer' },
         { id: 3, email: 'newdawn@choplife.com', access: 'co-owner' },
-        // { id: 4, email: 'newdawn@choplife.com', access: 'reviewer' },
-        // { id: 5, email: 'newdawn@choplife.com', access: 'editor' },
-        // { id: 6, email: 'newdawn@choplife.com', access: 'co-owner' },
-        // { id: 7, email: 'newdawn@choplife.com', access: 'co-owner' },
-        // { id: 8, email: 'newdawn@choplife.com', access: 'co-owner' },
-        // { id: 9, email: 'newdawn@choplife.com', access: 'co-owner' },
-        // { id: 10, email: 'newdawn@choplife.com', access: 'co-owner' },
+        { id: 4, email: 'newdawn@choplife.com', access: 'reviewer' },
+        { id: 5, email: 'newdawn@choplife.com', access: 'editor' },
+        { id: 6, email: 'newdawn@choplife.com', access: 'co-owner' },
+        { id: 7, email: 'newdawn@choplife.com', access: 'co-owner' },
+        { id: 8, email: 'newdawn@choplife.com', access: 'co-owner' },
+        { id: 9, email: 'newdawn@choplife.com', access: 'co-owner' },
+        { id: 10, email: 'newdawn@choplife.com', access: 'co-owner' },
     ]
 
     const copyToClipboard = () => {
-        const path = `${process.env.NEXT_PUBLIC_BASE_PATH}${pathname}`
-        navigator.clipboard.writeText(path)
+        navigator.clipboard.writeText(docPath)
         showSuccessNotification({ message: 'Copied to clipboard' })
     }
     
@@ -85,11 +92,11 @@ const ShareDocument = ({ opened, close }: ShareDocumentProps) => {
             <div className='flex gap-4 flex-col'>
                 <div className='flex gap-2 justify-between px-4'>
                     <TagsInput
-                        placeholder={!value ? "Single email or several, separated by commas" : ""}
+                        placeholder={!guestEmails ? "Single email or several, separated by commas" : ""}
                         classNames={{
                             root: 'w-[350px]',
                         }}
-                        value={value}
+                        value={guestEmails}
                         onChange={(evt) => setEmailValues(evt)}
                         error={error && error}
                         clearable

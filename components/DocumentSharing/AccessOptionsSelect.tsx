@@ -22,7 +22,7 @@ const AccessOptionsSelect = ({ }: AccessOptionsSelectProps) => {
         restricted: 'Only people invited can access'
     }
 
-    const RenderOption: SelectProps['renderOption'] = ({ option, checked }) => {
+    const RenderOption: SelectProps['renderOption'] = ({ option }) => {
         return (
             <div className='flex items-center gap-2'>
                 <div className=''>{icons[option.value]}</div>

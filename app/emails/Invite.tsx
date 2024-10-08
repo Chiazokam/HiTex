@@ -16,37 +16,24 @@ import {
     Tailwind,
   } from "@react-email/components";
   import * as React from "react";
+  import logo from '../../app/public/images/logo-light.png'
   
   interface InviteUserEmailProps {
     docTitle: string
-    username?: string;
-    userImage?: string;
-    invitedByUsername?: string;
-    inviteeEmail?: string;
-    inviteRole?: string;
-    teamImage?: string;
+    ownerUsername?: string;
+    ownerEmail?: string;
+    guestEmails?: string;
     inviteLink?: string;
-    inviteFromIp?: string;
-    inviteFromLocation?: string;
   }
-  
-  const baseUrl = process.env.VERCEL_URL
-    ? `https://${process.env.VERCEL_URL}`
-    : "";
   
   export const InviteUserEmail = ({
     docTitle,
-    username,
-    userImage,
-    invitedByUsername,
-    inviteeEmail,
-    inviteRole = 'view',
-    teamImage,
+    ownerUsername,
+    guestEmails,
     inviteLink,
-    inviteFromIp,
-    inviteFromLocation,
+    ownerEmail
   }: InviteUserEmailProps) => {
-    const previewText = `Join ${invitedByUsername} on Vercel`;
+    const previewText = `Invitation to ${docTitle}`;
   
     return (
       <Html>
@@ -54,50 +41,37 @@ import {
         <Preview>{previewText}</Preview>
         <Tailwind>
           <Body className="bg-white my-auto mx-auto font-sans px-2">
-            <Container className="flex border border-solid border-gray-100 rounded my-[40px] mx-auto p-[20px] max-w-[465px]">
-              {/* <Section className="mt-[32px]">
-                <Img
-                  src={`${baseUrl}/static/vercel-logo.png`}
-                  width="40"
-                  height="37"
-                  alt="Vercel"
-                  className="my-0 mx-auto"
-                />
-              </Section> */}
-              <Heading className="text-black text-lg font-normal text-center p-0 my-[30px] mx-0">
-                Invitation to {inviteRole} <strong>{docTitle}</strong>
-              </Heading>
+            <Container className="flex border border-solid border-gray-100 rounded my-10 mx-auto p-5 max-w-[465px]">
 
-              <Text className="text-black text-[14px] leading-[24px]">
-                Hello {username},
-              </Text>
-              <Text className="text-black text-[14px] leading-[24px]">
-                <strong>{invitedByUsername}</strong> (
+            <Img
+              src='https://res.cloudinary.com/zokky/image/upload/v1728415175/Your_paragraph_text.gif'
+              width="42"
+              height="42"
+              alt="hitexAI"
+            />
+
+              <Text className="text-zinc-800 text-sm leading-6">
+                <strong>{ownerUsername}</strong> (
                 <Link
-                  href={`mailto:${inviteeEmail}`}
+                  href={`mailto:${guestEmails}`}
                   className="text-blue-600 no-underline"
                 >
-                  {inviteeEmail}
+                  {ownerEmail}
                 </Link>
-                ) has invited you to <strong>{inviteRole}</strong> a documemt.
+                ) has invited you to <strong>{docTitle}</strong>.
               </Text>
-              <Section className="text-center my-6">
+              <Section className="w-full text-center my-6">
                 <Button
-                  className="w-full bg-[#000000] rounded text-white text-sm font-semibold no-underline text-center px-5 py-3"
+                  className="w-full bg-zinc-800 rounded text-white text-sm font-semibold no-underline text-center py-3"
                   href={inviteLink}
                 >
                   Accept Invitation
                 </Button>
               </Section>
-              {/* <Text className="text-black text-sm leading-6">
-                or copy and paste this URL into your browser:{" "}
-                <Link href={inviteLink} className="text-blue-600 no-underline">
-                  {inviteLink}
-                </Link>
-              </Text> */}
-              <Hr className="border border-solid border-[#eaeaea] my-6 mx-0 w-full" />
-              <Text className="text-[#666666] text-xs leading-6">
-                This message is intended for {inviteeEmail}. If you are not the owner of this email, please kindly ignore the request
+             
+              <Hr className="border border-solid border-gray-100 my-6 mx-0 w-full" />
+              <Text className="text-zinc-500 text-xs leading-6">
+                This message is intended for {guestEmails}. If you are not the owner of this email, please kindly ignore the request
               </Text>
             </Container>
           </Body>
@@ -106,18 +80,13 @@ import {
     );
   };
 
-
   InviteUserEmail.PreviewProps = {
     docTitle: 'Final Year Project',
-    username: 'Dummy',
-    userImage: 'https://bit.ly/kent-c-dodds',
-    invitedByUsername: 'Mirror',
-    inviteeEmail: 'dylan@mirror.com',
-    inviteRole: 'review',
-    teamImage: '',
+    ownerUsername: 'Mirror',
+    ownerEmail: 'dylan@mirror.com',
+    guestEmails: 'matt@invited.com',
+    guestRole: 'review',
     inviteLink: '',
-    inviteFromIp: '',
-    inviteFromLocation: '',
   } as InviteUserEmailProps;
   
   export default InviteUserEmail;
