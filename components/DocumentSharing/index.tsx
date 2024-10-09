@@ -7,6 +7,7 @@ import { LinkIcon } from '@/components/Icons';
 import InvitedPeople from './InvitedPeople';
 import showSuccessNotification from '@/lib/utils/notifications/showSuccessNotification'
 import showErrorNotification from '@/lib/utils/notifications/showErrorNotification'
+import { useClickOutside } from '@mantine/hooks';
 
 type ShareDocumentProps = {
     opened: boolean
@@ -25,6 +26,8 @@ const ShareDocument = ({ opened, close }: ShareDocumentProps) => {
     const [loading, setLoading] = useState<boolean>(false)
     const pathname = usePathname()
     const docPath = `${process.env.NEXT_PUBLIC_BASE_PATH}${pathname}`
+
+    const ref = useClickOutside(close);
 
     const setEmailValues = (values: string[]) => {
         if (isEmailValid(values[values.length - 1]) || values.length === 0) {
@@ -90,6 +93,7 @@ const ShareDocument = ({ opened, close }: ShareDocumentProps) => {
     return (
         <Dialog
             opened={opened}
+            ref={ref}
             classNames={{
                 root: '!w-[450px] !px-0 !max-h-[120] relative',
             }}
