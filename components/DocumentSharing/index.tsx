@@ -1,7 +1,5 @@
-import { useFormik } from 'formik'
 import { useState } from 'react'
 import { usePathname } from 'next/navigation'
-import * as yup from 'yup'
 import { Dialog, Button, TagsInput, Divider } from '@mantine/core'
 import { isEmailValid } from '@/lib/utils/isEmailValid'
 import AccessOptionsSelect from './AccessOptionsSelect'
@@ -9,8 +7,6 @@ import { LinkIcon } from '@/components/Icons';
 import InvitedPeople from './InvitedPeople';
 import showSuccessNotification from '@/lib/utils/notifications/showSuccessNotification'
 import showErrorNotification from '@/lib/utils/notifications/showErrorNotification'
-import { CheckCircleIcon } from '@/components/Icons'
-import { access } from 'fs'
 
 type ShareDocumentProps = {
     opened: boolean
@@ -31,7 +27,7 @@ const ShareDocument = ({ opened, close }: ShareDocumentProps) => {
     const docPath = `${process.env.NEXT_PUBLIC_BASE_PATH}${pathname}`
 
     const setEmailValues = (values: string[]) => {
-        if (isEmailValid(values[values.length - 1])) {
+        if (isEmailValid(values[values.length - 1]) || values.length === 0) {
             setGuestEmails([...values])
             setError('')
         } else {
@@ -111,6 +107,9 @@ const ShareDocument = ({ opened, close }: ShareDocumentProps) => {
                         onChange={(evt) => setEmailValues(evt)}
                         error={error && error}
                         clearable
+                        clearButtonProps={{
+                            onClick: () => setGuestEmails([])
+                        }}
                         data={['flint@curry.com', 'madea@full.com', 'neo@gator.com']}
                     />
 
