@@ -7,14 +7,13 @@ import { Select } from '@mantine/core'
 
 type Props = {
     person: {
-        id: number
         email: string
         // access: 'owner' | 'viewer' | 'reviewer' | 'editor' | 'co-owner'
         access: string
     }
 }
 
-const InvitedPeople = ({ person: { id, email, access} }: Props) => {
+const InvitedPeople = ({ person: { email, access} }: Props) => {
     const [value, setValue] = useState<string | null>(access)
 
     return (

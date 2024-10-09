@@ -10,14 +10,21 @@ import InvitedPeople from './InvitedPeople';
 import showSuccessNotification from '@/lib/utils/notifications/showSuccessNotification'
 import showErrorNotification from '@/lib/utils/notifications/showErrorNotification'
 import { CheckCircleIcon } from '@/components/Icons'
+import { access } from 'fs'
 
 type ShareDocumentProps = {
     opened: boolean
     close: () => void
 }
 
+type GuestProps = {
+    email: string
+    access: string
+}
+
 const ShareDocument = ({ opened, close }: ShareDocumentProps) => {
     const [guestEmails, setGuestEmails] = useState<string[]>([]);
+    const [newGuestEmails, setNewGuestEmails] = useState<GuestProps[]>([]);
     const [error, setError] = useState<string>('')
     const [loading, setLoading] = useState<boolean>(false)
     const pathname = usePathname()
@@ -48,31 +55,35 @@ const ShareDocument = ({ opened, close }: ShareDocumentProps) => {
         if (data.status === 200) {
             setLoading(false)
             showSuccessNotification({ message: 'Invitation Sent' })
+
+            const newGuests = guestEmails.map(email => ({
+                email: email,
+                access: 'viewer'
+            }))
+            setNewGuestEmails(newGuests)
+            setGuestEmails([])
         } else {
             setLoading(false)
             showErrorNotification({ message: 'Invitation not sent. Please try again later' })
+            // const newGuests = guestEmails.map(email => ({
+            //     email: email,
+            //     access: 'viewer'
+            // }))
+            // setNewGuestEmails(newGuests)
         }
     }
 
-    // enum AccessType {
-    //     Owner = 'Owner',
-    //     Viewer = 'Viewer', 
-    //     Reviewer = 'Reviewer',
-    //     Editor = 'Editor',
-    //     CoOwner = 'Co-owner'
-    // }
-
     const people = [
-        { id: 1, email: 'miracle@choplife.com', access: 'owner' },
-        { id: 2, email: 'owen@choplife.com', access:'viewer' },
-        { id: 3, email: 'newdawn@choplife.com', access: 'co-owner' },
-        { id: 4, email: 'newdawn@choplife.com', access: 'reviewer' },
-        { id: 5, email: 'newdawn@choplife.com', access: 'editor' },
-        { id: 6, email: 'newdawn@choplife.com', access: 'co-owner' },
-        { id: 7, email: 'newdawn@choplife.com', access: 'co-owner' },
-        { id: 8, email: 'newdawn@choplife.com', access: 'co-owner' },
-        { id: 9, email: 'newdawn@choplife.com', access: 'co-owner' },
-        { id: 10, email: 'newdawn@choplife.com', access: 'co-owner' },
+        { email: 'miracle@choplife.com', access: 'owner' },
+        { email: 'owen@choplife.com', access:'viewer' },
+        { email: 'newdawn@choplife.com', access: 'co-owner' },
+        { email: 'newdawn@choplife.com', access: 'reviewer' },
+        { email: 'newdawn@choplife.com', access: 'editor' },
+        { email: 'newdawn@choplife.com', access: 'co-owner' },
+        { email: 'newdawn@choplife.com', access: 'co-owner' },
+        { email: 'newdawn@choplife.com', access: 'co-owner' },
+        { email: 'newdawn@choplife.com', access: 'co-owner' },
+        { email: 'newdawn@choplife.com', access: 'co-owner' },
     ]
 
     const copyToClipboard = () => {
@@ -110,7 +121,7 @@ const ShareDocument = ({ opened, close }: ShareDocumentProps) => {
                 <div className='flex flex-col gap-4 px-4 pb-9'>
                     <span className='text-xs text-zinc-700'>People with access</span>
                     <div className='max-h-64 overflow-y-auto flex flex-col gap-4 pb-4'>
-                        {people.map((person) => <InvitedPeople key={person.id} person={person} />)}
+                        {[...people, ...newGuestEmails].map((person) => <InvitedPeople key={person.email} person={person} />)}
                     </div>
                 </div>
 
