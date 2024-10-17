@@ -3,11 +3,12 @@ import { usePathname } from 'next/navigation'
 import { Dialog, Button, TagsInput, Divider } from '@mantine/core'
 import { isEmailValid } from '@/lib/utils/isEmailValid'
 import AccessOptionsSelect from './AccessOptionsSelect'
-import { LinkIcon } from '@/components/Icons';
-import InvitedPeople from './InvitedPeople';
+import { LinkIcon } from '@/components/Icons'
+import InvitedPeople from './InvitedPeople'
 import showSuccessNotification from '@/lib/utils/notifications/showSuccessNotification'
 import showErrorNotification from '@/lib/utils/notifications/showErrorNotification'
-import { useClickOutside } from '@mantine/hooks';
+import { useClickOutside } from '@mantine/hooks'
+import { useIsMobile } from '@/lib/hooks/useIsMoile'
 
 type ShareDocumentProps = {
     opened: boolean
@@ -20,14 +21,15 @@ type GuestProps = {
 }
 
 const ShareDocument = ({ opened, close }: ShareDocumentProps) => {
-    const [guestEmails, setGuestEmails] = useState<string[]>([]);
-    const [newGuestEmails, setNewGuestEmails] = useState<GuestProps[]>([]);
+    const [guestEmails, setGuestEmails] = useState<string[]>([])
+    const [newGuestEmails, setNewGuestEmails] = useState<GuestProps[]>([])
     const [error, setError] = useState<string>('')
     const [loading, setLoading] = useState<boolean>(false)
     const pathname = usePathname()
     const docPath = `${process.env.NEXT_PUBLIC_BASE_PATH}${pathname}`
+    const isMobile = useIsMobile()
 
-    const ref = useClickOutside(close);
+    const ref = useClickOutside(close)
 
     const setEmailValues = (values: string[]) => {
         if (isEmailValid(values[values.length - 1]) || values.length === 0) {
@@ -50,7 +52,7 @@ const ShareDocument = ({ opened, close }: ShareDocumentProps) => {
                 guestEmails: guestEmails,
                 inviteLink: navigator.clipboard.writeText(docPath)
             }),
-          });
+          })
         if (data.status === 200) {
             setLoading(false)
             showSuccessNotification({ message: 'Invitation Sent' })
@@ -89,6 +91,8 @@ const ShareDocument = ({ opened, close }: ShareDocumentProps) => {
         navigator.clipboard.writeText(docPath)
         showSuccessNotification({ message: 'Copied to clipboard' })
     }
+
+    console.log(isMobile, '<<<<')
     
     return (
         <Dialog
