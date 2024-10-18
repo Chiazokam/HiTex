@@ -120,7 +120,7 @@ const ShareDocument = ({ opened, close }: ShareDocumentProps) => {
 
                 <div className='flex flex-col gap-4 px-4 pb-9'>
                     <span className='text-xs text-zinc-700'>People with access</span>
-                    <div className='max-h-64 overflow-y-auto flex flex-col gap-4 pb-4'>
+                    <div className='max-h-64 overflow-y-auto flex flex-col gap-4 pb-4 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:"none"] [scrollbar-width:"none"]'>
                         {[...people, ...newGuestEmails].map((person) => <InvitedPeople key={person.email} person={person} />)}
                     </div>
                 </div>
