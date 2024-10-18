@@ -3,7 +3,7 @@
 import React from 'react'
 import { DocumentTextIcon, EllipsisVerticalIcon, ArrowUpOnSquareIcon } from '@/components/Icons';
 import { Share2Icon } from '@/components/Icons/radixIcons';
-import { Divider, Button } from '@mantine/core'
+import { Divider, Button, Drawer } from '@mantine/core'
 import Contributors from '@/components/Contributors';
 import UserAvatar from '@/components/UserAvatar';
 import { useDisclosure } from '@mantine/hooks';
@@ -25,11 +25,11 @@ const Header = () => {
                 <Divider orientation="vertical" className='hidden sm:flex' />
                 
                 <Button className='!hidden sm:!flex' size='sm' color='blue.5' onClick={open}>Share</Button>
-                <Share2Icon fontWeight={1} className='!flex sm:!hidden w-5 h-5 text-gray-300 font-thin' onClick={open} />
+                <Share2Icon fontWeight={1} className='!flex sm:!hidden w-5 h-5 text-gray-500 font-thin' onClick={open} />
                 
                 <ShareDocument opened={opened} close={close} />
 
-                <EllipsisVerticalIcon className='w-4 h-4 !flex sm:!hidden' />
+                <EllipsisVerticalIcon className='w-4 h-4 !flex sm:!hidden text-gray-500' />
                 <div className='cursor-pointer !hidden sm:!flex'>
                     <UserAvatar image='' name='Dylan Mirror' />
                 </div>

@@ -1,1 +1,1 @@
-export const MOBILE_VIEWPORT = 768;
+export const MOBILE_VIEWPORT = 490;

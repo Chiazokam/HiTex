@@ -3,12 +3,13 @@ import { usePathname } from 'next/navigation'
 import { Dialog, Button, TagsInput, Divider } from '@mantine/core'
 import { isEmailValid } from '@/lib/utils/isEmailValid'
 import AccessOptionsSelect from './AccessOptionsSelect'
-import { LinkIcon } from '@/components/Icons'
+import { LinkIcon, ArrowRightIcon } from '@/components/Icons'
 import InvitedPeople from './InvitedPeople'
 import showSuccessNotification from '@/lib/utils/notifications/showSuccessNotification'
 import showErrorNotification from '@/lib/utils/notifications/showErrorNotification'
 import { useClickOutside } from '@mantine/hooks'
 import { useIsMobile } from '@/lib/hooks/useIsMoile'
+import ShareDocumentWrapper from './ShareDocumentWrapper'
 
 type ShareDocumentProps = {
     opened: boolean
@@ -92,18 +93,8 @@ const ShareDocument = ({ opened, close }: ShareDocumentProps) => {
         showSuccessNotification({ message: 'Copied to clipboard' })
     }
 
-    console.log(isMobile, '<<<<')
-    
     return (
-        <Dialog
-            opened={opened}
-            ref={ref}
-            classNames={{
-                root: '!w-[450px] !px-0 !max-h-[120] relative',
-            }}
-            onClose={close}
-            position={{ top: 80, right: 15 }}
-        >
+        <ShareDocumentWrapper opened={opened} close={close}>
             <div className='flex gap-4 flex-col'>
                 <div className='flex gap-2 justify-between px-4'>
                     <TagsInput
@@ -121,7 +112,9 @@ const ShareDocument = ({ opened, close }: ShareDocumentProps) => {
                         data={['flint@curry.com', 'madea@full.com', 'neo@gator.com']}
                     />
 
-                    <Button loading={loading} onClick={() => handleSubmit()} color='blue.5'>Invite</Button>
+                    <Button loading={loading} onClick={() => handleSubmit()} color='blue.5'>
+                        {isMobile ? <ArrowRightIcon className='w-5 h-5'/> : 'Invite'}
+                    </Button>
 
                 </div>
 
@@ -148,7 +141,7 @@ const ShareDocument = ({ opened, close }: ShareDocumentProps) => {
                         </button>
                     </div>
                 </div>
-      </Dialog>
+      </ShareDocumentWrapper>
     )
 }
 
