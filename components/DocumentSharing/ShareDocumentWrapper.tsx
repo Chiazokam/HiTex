@@ -15,7 +15,12 @@ const CloseText = () => {
 
 const ShareDocumentWrapper = ({ children, opened, close }: Props) => {
     const isMobile = useIsMobile()
-    const ref = useClickOutside(close)
+
+    const closeDialog = () => {
+        close()
+    }
+
+    const ref = useClickOutside(closeDialog)
 
 
     return (
@@ -45,7 +50,7 @@ const ShareDocumentWrapper = ({ children, opened, close }: Props) => {
                 </Drawer> : 
                 <Dialog
                     opened={opened}
-                    // ref={ref}
+                    ref={ref}
                     classNames={{
                         root: '!w-[450px] !px-0 !max-h-[120] relative',
                     }}

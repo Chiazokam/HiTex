@@ -80,12 +80,12 @@ const ShareDocument = ({ opened, close }: ShareDocumentProps) => {
         { email: 'owen@choplife.com', access:'viewer' },
         { email: 'newdawn@choplife.com', access: 'co-owner' },
         { email: 'newdawn@choplife.com', access: 'reviewer' },
-        // { email: 'newdawn@choplife.com', access: 'editor' },
-        // { email: 'newdawn@choplife.com', access: 'co-owner' },
-        // { email: 'newdawn@choplife.com', access: 'co-owner' },
-        // { email: 'newdawn@choplife.com', access: 'co-owner' },
-        // { email: 'newdawn@choplife.com', access: 'co-owner' },
-        // { email: 'newdawn@choplife.com', access: 'co-owner' },
+        { email: 'newdawn@choplife.com', access: 'editor' },
+        { email: 'newdawn@choplife.com', access: 'co-owner' },
+        { email: 'newdawn@choplife.com', access: 'co-owner' },
+        { email: 'newdawn@choplife.com', access: 'co-owner' },
+        { email: 'newdawn@choplife.com', access: 'co-owner' },
+        { email: 'newdawn@choplife.com', access: 'co-owner' },
     ]
 
     const copyToClipboard = () => {
