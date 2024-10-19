@@ -32,8 +32,8 @@ const AccessOptionsSelect = () => {
    
         <Select
             classNames={{
-                wrapper: 'w-64',
-                input: '!border-zinc-100 !rounded-full text-sm !text-zinc-700 hover:!bg-zinc-50'
+                wrapper: 'xs:w-64',
+                input: '!border-zinc-50 !rounded-full text-sm !text-zinc-700 hover:!bg-zinc-50'
             }}
             value={value}
             onChange={(value) => setValue(value)}

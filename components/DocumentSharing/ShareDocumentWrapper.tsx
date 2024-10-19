@@ -9,9 +9,14 @@ type Props = {
     close: () => void
 }
 
+const CloseText = () => {
+    return <span className='mr-4 text-sky-600 text-sm'>Done</span>
+}
+
 const ShareDocumentWrapper = ({ children, opened, close }: Props) => {
     const isMobile = useIsMobile()
     const ref = useClickOutside(close)
+
 
     return (
         <>
@@ -25,18 +30,22 @@ const ShareDocumentWrapper = ({ children, opened, close }: Props) => {
                     offset={4}
                     closeOnClickOutside
                     closeOnEscape
-                    withCloseButton={false}
+                    trapFocus={false}
                     withinPortal
                     classNames={{
                         title: 'text-zinc-700 !font-medium',
-                        root: 'overflow-x-hidden'
+                        content: '!overflow-hidden !h-full',
+                        body: '!p-0'
                     }}
+                    closeButtonProps={{
+                        icon: <CloseText />,
+                      }}
                 >
                     {children}
                 </Drawer> : 
                 <Dialog
                     opened={opened}
-                    ref={ref}
+                    // ref={ref}
                     classNames={{
                         root: '!w-[450px] !px-0 !max-h-[120] relative',
                     }}

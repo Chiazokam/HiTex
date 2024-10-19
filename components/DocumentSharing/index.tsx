@@ -80,12 +80,12 @@ const ShareDocument = ({ opened, close }: ShareDocumentProps) => {
         { email: 'owen@choplife.com', access:'viewer' },
         { email: 'newdawn@choplife.com', access: 'co-owner' },
         { email: 'newdawn@choplife.com', access: 'reviewer' },
-        { email: 'newdawn@choplife.com', access: 'editor' },
-        { email: 'newdawn@choplife.com', access: 'co-owner' },
-        { email: 'newdawn@choplife.com', access: 'co-owner' },
-        { email: 'newdawn@choplife.com', access: 'co-owner' },
-        { email: 'newdawn@choplife.com', access: 'co-owner' },
-        { email: 'newdawn@choplife.com', access: 'co-owner' },
+        // { email: 'newdawn@choplife.com', access: 'editor' },
+        // { email: 'newdawn@choplife.com', access: 'co-owner' },
+        // { email: 'newdawn@choplife.com', access: 'co-owner' },
+        // { email: 'newdawn@choplife.com', access: 'co-owner' },
+        // { email: 'newdawn@choplife.com', access: 'co-owner' },
+        // { email: 'newdawn@choplife.com', access: 'co-owner' },
     ]
 
     const copyToClipboard = () => {
@@ -120,7 +120,7 @@ const ShareDocument = ({ opened, close }: ShareDocumentProps) => {
 
                 <div className='flex flex-col gap-4 px-4 pb-9'>
                     <span className='text-xs text-zinc-700'>People with access</span>
-                    <div className='max-h-64 overflow-y-auto flex flex-col gap-4 pb-4 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:"none"] [scrollbar-width:"none"]'>
+                    <div className='h-[30rem] xs:max-h-64 overflow-y-auto flex flex-col gap-4 pb-4 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:"none"] [scrollbar-width:"none"]'>
                         {[...people, ...newGuestEmails].map((person) => <InvitedPeople key={person.email} person={person} />)}
                     </div>
                 </div>
@@ -130,16 +130,18 @@ const ShareDocument = ({ opened, close }: ShareDocumentProps) => {
 
                     <Divider orientation='horizontal' className='!border-slate-100' />
 
-                    <div className='flex px-4 py-2 justify-between items-center'>
+                    <div className='flex flex-col gap-2 xs:flex-row px-4 py-2 justify-between xs:items-center'>
                         <AccessOptionsSelect />
+                        {isMobile ? <Button className='!w-full' size='sm' color='blue.5'>Copy link</Button> :
                         <button
                             className='flex items-center gap-2 hover:bg-zinc-50 cursor-pointer px-2 rounded-md h-5'
                             onClick={copyToClipboard}
                         >
                             <LinkIcon className='w-3 h-3 text-zinc-400' />
                             <span className='text-sm text-zinc-700'>Copy link</span>
-                        </button>
-                    </div>
+
+                        </button>}
+                        </div>
                 </div>
       </ShareDocumentWrapper>
     )

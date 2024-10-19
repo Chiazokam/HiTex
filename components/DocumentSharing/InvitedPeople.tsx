@@ -24,15 +24,16 @@ const InvitedPeople = ({ person: { email, access} }: Props) => {
             </div>
 
             {/* show owner, and then co-owners at the top of the list */}
-            {value === 'owner' ? 
-                <span className='border border-zinc-100 rounded-full text-xs text-zinc-700 px-4 py-2'>
+            {value === 'owner' ?  // This will come from the backend, when backend is implemented
+                <span className='border border-zinc-50 rounded-full text-xs text-zinc-700 px-4 py-2'>
                     Owner
                 </span> :
                 <Select
                     withCheckIcon={false}
                     classNames={{
-                        wrapper: 'max-w-28 w-auto',
-                        input: '!border-zinc-100 !rounded-full !text-xs !text-zinc-700 hover:!bg-zinc-50'
+                        wrapper: 'max-w-28',
+                        input: '!border-zinc-50 !rounded-full !text-xs !text-zinc-700 hover:!bg-zinc-50',
+                        option: '!text-xs'
                     }}
                     value={value}
                     onChange={(value) => setValue(value)}
