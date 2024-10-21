@@ -13,10 +13,14 @@ const config: Config = {
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
+      screens: {
+        'xs': '490px',
+        // => @media (min-width: 490px) { ... }
+      }
     },
     fontFamily: {
       body: ["Mona Sans", "Helvetica Neue", "Helvetica", "Arial", "sans-serif"]
-    }
+    },
   },
   plugins: [],
 };

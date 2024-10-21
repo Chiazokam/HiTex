@@ -3,11 +3,13 @@ import { usePathname } from 'next/navigation'
 import { Dialog, Button, TagsInput, Divider } from '@mantine/core'
 import { isEmailValid } from '@/lib/utils/isEmailValid'
 import AccessOptionsSelect from './AccessOptionsSelect'
-import { LinkIcon } from '@/components/Icons';
-import InvitedPeople from './InvitedPeople';
+import { LinkIcon, ArrowRightIcon } from '@/components/Icons'
+import InvitedPeople from './InvitedPeople'
 import showSuccessNotification from '@/lib/utils/notifications/showSuccessNotification'
 import showErrorNotification from '@/lib/utils/notifications/showErrorNotification'
-import { useClickOutside } from '@mantine/hooks';
+import { useClickOutside } from '@mantine/hooks'
+import { useIsMobile } from '@/lib/hooks/useIsMoile'
+import ShareDocumentWrapper from './ShareDocumentWrapper'
 
 type ShareDocumentProps = {
     opened: boolean
@@ -20,14 +22,15 @@ type GuestProps = {
 }
 
 const ShareDocument = ({ opened, close }: ShareDocumentProps) => {
-    const [guestEmails, setGuestEmails] = useState<string[]>([]);
-    const [newGuestEmails, setNewGuestEmails] = useState<GuestProps[]>([]);
+    const [guestEmails, setGuestEmails] = useState<string[]>([])
+    const [newGuestEmails, setNewGuestEmails] = useState<GuestProps[]>([])
     const [error, setError] = useState<string>('')
     const [loading, setLoading] = useState<boolean>(false)
     const pathname = usePathname()
     const docPath = `${process.env.NEXT_PUBLIC_BASE_PATH}${pathname}`
+    const isMobile = useIsMobile()
 
-    const ref = useClickOutside(close);
+    const ref = useClickOutside(close)
 
     const setEmailValues = (values: string[]) => {
         if (isEmailValid(values[values.length - 1]) || values.length === 0) {
@@ -50,7 +53,7 @@ const ShareDocument = ({ opened, close }: ShareDocumentProps) => {
                 guestEmails: guestEmails,
                 inviteLink: navigator.clipboard.writeText(docPath)
             }),
-          });
+          })
         if (data.status === 200) {
             setLoading(false)
             showSuccessNotification({ message: 'Invitation Sent' })
@@ -89,17 +92,9 @@ const ShareDocument = ({ opened, close }: ShareDocumentProps) => {
         navigator.clipboard.writeText(docPath)
         showSuccessNotification({ message: 'Copied to clipboard' })
     }
-    
+
     return (
-        <Dialog
-            opened={opened}
-            ref={ref}
-            classNames={{
-                root: '!w-[450px] !px-0 !max-h-[120] relative',
-            }}
-            onClose={close}
-            position={{ top: 80, right: 15 }}
-        >
+        <ShareDocumentWrapper opened={opened} close={close}>
             <div className='flex gap-4 flex-col'>
                 <div className='flex gap-2 justify-between px-4'>
                     <TagsInput
@@ -117,13 +112,15 @@ const ShareDocument = ({ opened, close }: ShareDocumentProps) => {
                         data={['flint@curry.com', 'madea@full.com', 'neo@gator.com']}
                     />
 
-                    <Button loading={loading} onClick={() => handleSubmit()} color='blue.5'>Invite</Button>
+                    <Button loading={loading} onClick={() => handleSubmit()} color='blue.5'>
+                        {isMobile ? <ArrowRightIcon className='w-5 h-5'/> : 'Invite'}
+                    </Button>
 
                 </div>
 
                 <div className='flex flex-col gap-4 px-4 pb-9'>
                     <span className='text-xs text-zinc-700'>People with access</span>
-                    <div className='max-h-64 overflow-y-auto flex flex-col gap-4 pb-4'>
+                    <div className='h-[30rem] xs:max-h-64 overflow-y-auto flex flex-col gap-4 pb-4 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:"none"] [scrollbar-width:"none"]'>
                         {[...people, ...newGuestEmails].map((person) => <InvitedPeople key={person.email} person={person} />)}
                     </div>
                 </div>
@@ -133,18 +130,20 @@ const ShareDocument = ({ opened, close }: ShareDocumentProps) => {
 
                     <Divider orientation='horizontal' className='!border-slate-100' />
 
-                    <div className='flex px-4 py-2 justify-between items-center'>
+                    <div className='flex flex-col gap-2 xs:flex-row px-4 py-2 justify-between xs:items-center'>
                         <AccessOptionsSelect />
+                        {isMobile ? <Button className='!w-full' size='sm' color='blue.5'>Copy link</Button> :
                         <button
                             className='flex items-center gap-2 hover:bg-zinc-50 cursor-pointer px-2 rounded-md h-5'
                             onClick={copyToClipboard}
                         >
                             <LinkIcon className='w-3 h-3 text-zinc-400' />
                             <span className='text-sm text-zinc-700'>Copy link</span>
-                        </button>
-                    </div>
+
+                        </button>}
+                        </div>
                 </div>
-      </Dialog>
+      </ShareDocumentWrapper>
     )
 }
 

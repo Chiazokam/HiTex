@@ -4,7 +4,7 @@ import UserAvatar from "@/components/UserAvatar";
 const AuthorBox = () => {
     return (
         <div className="flex flex-col gap-4 mb-12">
-            <div className="text-4xl md:text-5xl font-medium tracking-wide leading-tight">
+            <div className="text-2xl md:text-5xl font-medium tracking-wide leading-tight">
                 Seven Fundamental Design Principles
             </div>
 

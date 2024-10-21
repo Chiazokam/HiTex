@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import * as yup from 'yup'
 import { Select, SelectProps } from '@mantine/core'
 import { GlobeAltIcon, LockClosedIcon, ChevronDownIcon } from '@/components/Icons';
 
@@ -32,8 +31,8 @@ const AccessOptionsSelect = () => {
    
         <Select
             classNames={{
-                wrapper: 'w-64',
-                input: '!border-zinc-100 !rounded-full text-sm !text-zinc-700 hover:!bg-zinc-50'
+                wrapper: 'xs:w-64',
+                input: '!border-zinc-50 !rounded-full text-sm !text-zinc-700 hover:!bg-zinc-50'
             }}
             value={value}
             onChange={(value) => setValue(value)}
@@ -44,6 +43,7 @@ const AccessOptionsSelect = () => {
             leftSection={icons[value || 'restricted']}
             rightSection={<ChevronDownIcon className='w-3 h-3 text-zinc-700' />}
             renderOption={RenderOption}
+            comboboxProps={{ position: 'top', middlewares: { flip: false, shift: false } }}
         />
     )
 }
