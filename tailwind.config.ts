@@ -16,6 +16,9 @@ const config: Config = {
       screens: {
         'xs': '490px',
         // => @media (min-width: 490px) { ... }
+      },
+      fontSize: {
+        xxs: ['10px', '16px'],
       }
     },
     fontFamily: {
