@@ -19,6 +19,7 @@ type ShareDocumentProps = {
 type GuestProps = {
     email: string
     access: string
+    invitationStatus?: string
 }
 
 const ShareDocument = ({ opened, close }: ShareDocumentProps) => {
