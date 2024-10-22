@@ -79,13 +79,13 @@ const ShareDocument = ({ opened, close }: ShareDocumentProps) => {
         { email: 'miracle@choplife.com', access: 'owner' },
         { email: 'owen@choplife.com', access:'viewer', invitationStatus: 'pending invitation' },
         { email: 'newdawn@choplife.com', access: 'co-owner', invitationStatus: 'pending invitation' },
-        { email: 'newdawn@choplife.com', access: 'reviewer', invitationStatus: 'accepted' },
         { email: 'newdawn@choplife.com', access: 'editor', invitationStatus: 'pending invitation' },
+        { email: 'newdawn@choplife.com', access: 'co-owner', invitationStatus: 'pending invitation' },
+        { email: 'newdawn@choplife.com', access: 'co-owner', invitationStatus: 'pending invitation' },
         { email: 'newdawn@choplife.com', access: 'co-owner', invitationStatus: 'rejected' },
         { email: 'newdawn@choplife.com', access: 'co-owner', invitationStatus: 'accepted' },
-        { email: 'newdawn@choplife.com', access: 'co-owner', invitationStatus: 'pending invitation' },
-        { email: 'newdawn@choplife.com', access: 'co-owner', invitationStatus: 'pending invitation' },
-        { email: 'newdawn@choplife.com', access: 'co-owner', invitationStatus: 'pending invitation' },
+        { email: 'newdawn@choplife.com', access: 'editor', invitationStatus: 'accepted' },
+        { email: 'newdawn@choplife.com', access: 'reviewer', invitationStatus: 'accepted' },
     ]
 
     const copyToClipboard = () => {

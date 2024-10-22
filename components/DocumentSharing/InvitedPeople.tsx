@@ -3,6 +3,7 @@ import { ChevronDownIcon } from '@/components/Icons';
 import UserAvatar from '@/components/UserAvatar';
 import { Select } from '@mantine/core'
 // import { AccessType } from '@/lib/types';
+import capitalize from '@/lib/utils/capitalize'
 
 
 type Props = {
@@ -29,9 +30,11 @@ const InvitedPeople = ({ person: { email, access, invitationStatus} }: Props) =>
             </div>
 
             {/* show owner, and then co-owners at the top of the list */}
-            {invitationStatus !== 'accepted' ?  // This will come from the backend, when backend is implemented
+            {/* show pending invitations at the top. Accepted/Rejected invitations will be at bottom */}
+            {/* All these will come from the backend, when backend is implemented */}
+            {invitationStatus !== 'accepted' ?
                 <span className='border border-zinc-50 rounded-full text-xs text-zinc-700 px-4 py-2'>
-                    {access}
+                    {capitalize(access)}
                 </span> :
                 <Select
                     withCheckIcon={false}
