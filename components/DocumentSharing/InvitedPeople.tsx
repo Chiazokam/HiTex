@@ -11,7 +11,7 @@ type Props = {
         email: string
         // access: 'owner' | 'viewer' | 'reviewer' | 'editor' | 'co-owner'
         access: string
-        invitationStatus?: string
+        invitationStatus?: string // 'pending invitation' | 'accepted' | 'rejected'
     }
 }
 
