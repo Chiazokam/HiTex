@@ -77,15 +77,15 @@ const ShareDocument = ({ opened, close }: ShareDocumentProps) => {
 
     const people = [
         { email: 'miracle@choplife.com', access: 'owner' },
-        { email: 'owen@choplife.com', access:'viewer' },
-        { email: 'newdawn@choplife.com', access: 'co-owner' },
-        { email: 'newdawn@choplife.com', access: 'reviewer' },
-        { email: 'newdawn@choplife.com', access: 'editor' },
-        { email: 'newdawn@choplife.com', access: 'co-owner' },
-        { email: 'newdawn@choplife.com', access: 'co-owner' },
-        { email: 'newdawn@choplife.com', access: 'co-owner' },
-        { email: 'newdawn@choplife.com', access: 'co-owner' },
-        { email: 'newdawn@choplife.com', access: 'co-owner' },
+        { email: 'owen@choplife.com', access:'viewer', invitationStatus: 'pending invitation' },
+        { email: 'newdawn@choplife.com', access: 'co-owner', invitationStatus: 'pending invitation' },
+        { email: 'newdawn@choplife.com', access: 'reviewer', invitationStatus: 'accepted' },
+        { email: 'newdawn@choplife.com', access: 'editor', invitationStatus: 'pending invitation' },
+        { email: 'newdawn@choplife.com', access: 'co-owner', invitationStatus: 'rejected' },
+        { email: 'newdawn@choplife.com', access: 'co-owner', invitationStatus: 'accepted' },
+        { email: 'newdawn@choplife.com', access: 'co-owner', invitationStatus: 'pending invitation' },
+        { email: 'newdawn@choplife.com', access: 'co-owner', invitationStatus: 'pending invitation' },
+        { email: 'newdawn@choplife.com', access: 'co-owner', invitationStatus: 'pending invitation' },
     ]
 
     const copyToClipboard = () => {

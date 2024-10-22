@@ -10,23 +10,28 @@ type Props = {
         email: string
         // access: 'owner' | 'viewer' | 'reviewer' | 'editor' | 'co-owner'
         access: string
+        invitationStatus: string
     }
 }
 
-const InvitedPeople = ({ person: { email, access} }: Props) => {
+const InvitedPeople = ({ person: { email, access, invitationStatus} }: Props) => {
     const [value, setValue] = useState<string | null>(access)
 
     return (
         <div className='flex items-center justify-between'>
             <div className='flex items-center gap-2'>
                 <UserAvatar image="" name={email} />
-                <span className='text-sm text-zinc-700'>{email}</span>
+
+                <div className='flex flex-col'>
+                    <span className='text-sm text-zinc-700'>{email}</span>
+                    <span className='text-xs text-zinc-400'>{invitationStatus}</span>
+                </div>
             </div>
 
             {/* show owner, and then co-owners at the top of the list */}
-            {value === 'owner' ?  // This will come from the backend, when backend is implemented
+            {invitationStatus !== 'accepted' ?  // This will come from the backend, when backend is implemented
                 <span className='border border-zinc-50 rounded-full text-xs text-zinc-700 px-4 py-2'>
-                    Owner
+                    {access}
                 </span> :
                 <Select
                     withCheckIcon={false}
@@ -42,6 +47,7 @@ const InvitedPeople = ({ person: { email, access} }: Props) => {
                         { value: 'reviewer', label: 'Reviewer' },
                         { value: 'editor', label: 'Editor' },
                         { value: 'co-owner', label: 'Co-owner' },
+                        { value: 'owner', label: 'Owner' },
                     ]}
                     rightSection={<ChevronDownIcon className='w-3 h-3 text-zinc-700' />}
                 />
