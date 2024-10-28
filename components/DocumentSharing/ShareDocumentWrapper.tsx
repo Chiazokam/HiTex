@@ -38,9 +38,9 @@ const ShareDocumentWrapper = ({ children, opened, close }: Props) => {
                     trapFocus={false}
                     withinPortal
                     classNames={{
-                        title: 'text-zinc-700 !font-medium',
-                        content: '!overflow-hidden !h-full',
-                        body: '!p-0'
+                        title: 'text-zinc-700 text-base font-medium my-0',
+                        content: 'overflow-hidden h-full',
+                        body: 'p-0'
                     }}
                     closeButtonProps={{
                         icon: <CloseText />,
@@ -50,9 +50,9 @@ const ShareDocumentWrapper = ({ children, opened, close }: Props) => {
                 </Drawer> : 
                 <Dialog
                     opened={opened}
-                    ref={ref}
+                    // ref={ref}
                     classNames={{
-                        root: '!w-[450px] !px-0 !max-h-[120] relative',
+                        root: 'w-[450px] !px-0 max-h-[120] relative',
                     }}
                     onClose={close}
                     position={{ top: 80, right: 15 }}
