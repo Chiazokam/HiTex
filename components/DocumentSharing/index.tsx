@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { usePathname } from 'next/navigation'
-import { Dialog, Button, TagsInput, Divider } from '@mantine/core'
+import { Button, TagsInput, Divider } from '@mantine/core'
 import { isEmailValid } from '@/lib/utils/isEmailValid'
 import AccessOptionsSelect from './AccessOptionsSelect'
 import { LinkIcon, ArrowRightIcon, CheckCircleIcon } from '@/components/Icons'
@@ -110,7 +110,11 @@ const ShareDocument = ({ opened, close }: ShareDocumentProps) => {
                         data={['flint@curry.com', 'madea@full.com', 'neo@gator.com']}
                     />
 
-                    <Button loading={loading} onClick={() => handleSubmit()} className='px-4 py-1 bg-sky-500 text-white text-sm font-semibold'>
+                    <Button
+                        loading={loading}
+                        onClick={() => handleSubmit()}
+                        className='px-4 py-1 bg-sky-500 text-white text-sm font-semibold'
+                    >
                         {isMobile ? <ArrowRightIcon className='w-5 h-5'/> : 'Invite'}
                     </Button>
 
