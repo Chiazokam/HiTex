@@ -33,7 +33,7 @@ const Contributors = ({ className }: ContributorsProps) => {
         <Avatar.Group spacing="sm">
           {contributors.map(contributor => (
             <Tooltip key={contributor.name}  label={contributor.name} withArrow>
-              <Avatar size={34} src={contributor.image} />
+              <Avatar size={32} src={contributor.image} />
             </Tooltip>
             ))}
         </Avatar.Group>

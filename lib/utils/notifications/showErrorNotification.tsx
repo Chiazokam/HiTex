@@ -1,4 +1,4 @@
-import { showNotification } from '@mantine/notifications'
+import { notifications } from '@mantine/notifications'
 import { ExclamationTriangleIcon } from '@/components/Icons'
 
 type Props = {
@@ -7,15 +7,17 @@ type Props = {
 }
 
 const showErrorNotification = ({ title, message }: Props) => {
-  showNotification({
-        id: 'error-notification',
-        icon: <ExclamationTriangleIcon className='!h-12 !w-12 !text-red-600' />,
-        title,
-        message,
-        classNames: {
-          icon: 'h-12 w-12 !text-red-600 !bg-red-50 rounded-md rounded-lg',
-      }
-      })
+  notifications.show({
+    id: 'error-notification',
+    message,
+    title,
+    icon: <ExclamationTriangleIcon className="w-6 h-6 text-red-700" />,
+    classNames: {
+      root: 'z-[var(--z-toast)] shadow-xl px-4 py-3 rounded-lg w-[384px] mx-auto before:content-none flex items-center',
+      icon: 'm-0 w-6 h-6 bg-transparent mr-3',
+      body: 'mr-4 flex flex-col gap-1 [&>div:nth-child(1)]:text-sm [&>div:nth-child(1)]:leading-5 [&>div:nth-child(1)]:font-medium [&>div:nth-child(1)]:text-primary [&>div:nth-child(1)]:m-0',
+    }
+  })
 }
 
 export default showErrorNotification

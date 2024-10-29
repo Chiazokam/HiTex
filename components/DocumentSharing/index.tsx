@@ -1,15 +1,16 @@
 import { useState } from 'react'
 import { usePathname } from 'next/navigation'
-import { Dialog, Button, TagsInput, Divider } from '@mantine/core'
+import { Button, TagsInput, Divider } from '@mantine/core'
 import { isEmailValid } from '@/lib/utils/isEmailValid'
 import AccessOptionsSelect from './AccessOptionsSelect'
-import { LinkIcon, ArrowRightIcon } from '@/components/Icons'
+import { LinkIcon, ArrowRightIcon, CheckCircleIcon } from '@/components/Icons'
 import InvitedPeople from './InvitedPeople'
 import showSuccessNotification from '@/lib/utils/notifications/showSuccessNotification'
 import showErrorNotification from '@/lib/utils/notifications/showErrorNotification'
 import { useClickOutside } from '@mantine/hooks'
 import { useIsMobile } from '@/lib/hooks/useIsMoile'
 import ShareDocumentWrapper from './ShareDocumentWrapper'
+import { showNotification } from '@mantine/notifications'
 
 type ShareDocumentProps = {
     opened: boolean
@@ -68,11 +69,6 @@ const ShareDocument = ({ opened, close }: ShareDocumentProps) => {
         } else {
             setLoading(false)
             showErrorNotification({ message: 'Invitation not sent. Please try again later' })
-            // const newGuests = guestEmails.map(email => ({
-            //     email: email,
-            //     access: 'viewer'
-            // }))
-            // setNewGuestEmails(newGuests)
         }
     }
 
@@ -102,6 +98,7 @@ const ShareDocument = ({ opened, close }: ShareDocumentProps) => {
                         placeholder={!guestEmails ? "Single email or several, separated by commas" : ""}
                         classNames={{
                             root: 'w-[350px]',
+                            input: 'border border-zinc-200 focus:border-sky-600'
                         }}
                         value={guestEmails}
                         onChange={(evt) => setEmailValues(evt)}
@@ -113,7 +110,11 @@ const ShareDocument = ({ opened, close }: ShareDocumentProps) => {
                         data={['flint@curry.com', 'madea@full.com', 'neo@gator.com']}
                     />
 
-                    <Button loading={loading} onClick={() => handleSubmit()} color='blue.5'>
+                    <Button
+                        loading={loading}
+                        onClick={() => handleSubmit()}
+                        className='px-4 py-1 bg-sky-500 text-white text-sm font-semibold'
+                    >
                         {isMobile ? <ArrowRightIcon className='w-5 h-5'/> : 'Invite'}
                     </Button>
 
@@ -122,26 +123,27 @@ const ShareDocument = ({ opened, close }: ShareDocumentProps) => {
                 <div className='flex flex-col gap-4 px-4 pb-9'>
                     <span className='text-xs text-zinc-700'>People with access</span>
                     <div className='h-[30rem] xs:max-h-64 overflow-y-auto flex flex-col gap-4 pb-4 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:"none"] [scrollbar-width:"none"]'>
-                        {[...people, ...newGuestEmails].map((person) => <InvitedPeople key={person.email} person={person} />)}
+                        {[...newGuestEmails, ...people].map((person) => <InvitedPeople key={person.email} person={person} />)}
                     </div>
                 </div>
 
             </div>
-                <div className='fixed w-full bg-white bottom-0'>
+                <div className='fixed w-full bg-white left-0 bottom-0'>
 
-                    <Divider orientation='horizontal' className='!border-slate-100' />
+                    <Divider orientation='horizontal' className='hidden sm:flex w-1 bg-zinc-300' />
 
                     <div className='flex flex-col gap-2 xs:flex-row px-4 py-2 justify-between xs:items-center'>
                         <AccessOptionsSelect />
-                        {isMobile ? <Button className='!w-full' size='sm' color='blue.5'>Copy link</Button> :
-                        <button
-                            className='flex items-center gap-2 hover:bg-zinc-50 cursor-pointer px-2 rounded-md h-5'
+                        {isMobile ? <Button className='w-full px-5 py-1 bg-sky-500 text-white text-sm font-semibold'>Copy link</Button> :
+                        <Button
+                            className='flex items-center gap-4 hover:bg-zinc-50 hover:w-24 hover:h-9 cursor-pointer px-2 rounded-full h-5'
                             onClick={copyToClipboard}
+                            variant='default'
                         >
-                            <LinkIcon className='w-3 h-3 text-zinc-400' />
+                            <LinkIcon className='w-3 h-3 text-zinc-400 mr-2' />
                             <span className='text-sm text-zinc-700'>Copy link</span>
 
-                        </button>}
+                        </Button>}
                         </div>
                 </div>
       </ShareDocumentWrapper>

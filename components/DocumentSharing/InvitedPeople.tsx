@@ -40,8 +40,8 @@ const InvitedPeople = ({ person: { email, access, invitationStatus} }: Props) =>
                     withCheckIcon={false}
                     classNames={{
                         wrapper: 'max-w-28',
-                        input: '!border-zinc-50 !rounded-full !text-xs !text-zinc-700 hover:!bg-zinc-50',
-                        option: '!text-xs'
+                        input: 'border-zinc-50 rounded-full text-xs text-zinc-700 hover:bg-zinc-50 pl-3',
+                        option: 'text-xs'
                     }}
                     value={value}
                     onChange={(value) => setValue(value)}

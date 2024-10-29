@@ -59,7 +59,7 @@ export const TextLevels = ({ editor }: TextLevelsProps) => {
           type="button"
           pointer
           classNames={{
-            input: '!border-0',
+            input: 'border-0 text-xs text-zinc-600',
             root: 'w-[120px]',
           }}
           rightSection={<ChevronDownIcon className='w-3 h-3' />}
@@ -71,7 +71,7 @@ export const TextLevels = ({ editor }: TextLevelsProps) => {
       </Combobox.Target>
 
       <Combobox.Dropdown>
-        <Combobox.Options>{options}</Combobox.Options>
+        <Combobox.Options className="text-xs text-zinc-600">{options}</Combobox.Options>
       </Combobox.Dropdown>
     </Combobox>
   );

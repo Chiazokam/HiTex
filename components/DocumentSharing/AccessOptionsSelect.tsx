@@ -32,7 +32,7 @@ const AccessOptionsSelect = () => {
         <Select
             classNames={{
                 wrapper: 'xs:w-64',
-                input: '!border-zinc-50 !rounded-full text-sm !text-zinc-700 hover:!bg-zinc-50'
+                input: 'border border-zinc-50 rounded-full text-sm text-zinc-700 hover:bg-zinc-50'
             }}
             value={value}
             onChange={(value) => setValue(value)}
@@ -40,7 +40,7 @@ const AccessOptionsSelect = () => {
                 { value: 'public', label: 'Anyone with the link' },
                 { value: 'restricted', label: 'Restricted' }
               ]}
-            leftSection={icons[value || 'restricted']}
+            // leftSection={icons[value || 'restricted']}
             rightSection={<ChevronDownIcon className='w-3 h-3 text-zinc-700' />}
             renderOption={RenderOption}
             comboboxProps={{ position: 'top', middlewares: { flip: false, shift: false } }}

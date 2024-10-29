@@ -1,5 +1,5 @@
 import type { Metadata } from "next"
-import '@mantine/core/styles.css'
+import '@mantine/core/styles.layer.css';
 import '@mantine/notifications/styles.css'
 import "./globals.css"
 import { Providers } from '@/app/providers'
