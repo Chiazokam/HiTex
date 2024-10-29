@@ -19,14 +19,14 @@ export const LinkButton = ({ editor }: LinkButtonProps) => {
     return (
         <Popover
             classNames={{
-                dropdown: '!p-0 border-none bg-transparent shadow-none'
+                dropdown: 'p-0 border-none bg-transparent shadow-none'
             }}
             offset={15}
             opened={opened}
         >
             <Popover.Target>
                 <button
-                    className={clsx('px-1 py-1', editor.isActive('orderedList') && 'rounded bg-gray-400 text-white')}
+                    className={clsx('px-1 py-1 hover:bg-zinc-50 hover:rounded-md', editor.isActive('orderedList') && 'rounded bg-gray-400 text-white')}
                     onClick={() => setOpened(!opened)}
                 >
                     <LinkIcon className='w-3 h-3' />

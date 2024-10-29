@@ -27,7 +27,7 @@ const Toolbar = ({ editor }: ToolbarProps) => {
                 .toggleBold()
                 .run()
             }
-            className={clsx('px-1 py-1', editor.isActive('bold') && 'rounded bg-gray-400 text-white')}
+            className={clsx('px-1 py-1 hover:bg-zinc-50 hover:rounded-md', editor.isActive('bold') && 'rounded bg-gray-400 text-white')}
             >
             <BoldIcon className='w-3 h-3' />
             </button>
@@ -40,13 +40,13 @@ const Toolbar = ({ editor }: ToolbarProps) => {
                 .toggleItalic()
                 .run()
             }
-            className={clsx('px-1 py-1', editor.isActive('italic') && 'rounded bg-gray-400 text-white')}
+            className={clsx('px-1 py-1 hover:bg-zinc-50 hover:rounded-md', editor.isActive('italic') && 'rounded bg-gray-400 text-white')}
             >
             <ItalicIcon className='w-3 h-3' />
             </button>
             <button
                 onClick={() => editor.chain().focus().toggleUnderline().run()}
-                className={clsx('px-1 py-1', editor.isActive('underline') && 'rounded bg-gray-400 text-white')}
+                className={clsx('px-1 py-1 hover:bg-zinc-50 hover:rounded-md', editor.isActive('underline') && 'rounded bg-gray-400 text-white')}
             >
                 <UnderlineIcon className='w-3 h-3' />
             </button>
@@ -59,7 +59,7 @@ const Toolbar = ({ editor }: ToolbarProps) => {
                 .toggleStrike()
                 .run()
             }
-            className={clsx('px-1 py-1', editor.isActive('strike') && 'rounded bg-gray-400 text-white')}
+            className={clsx('px-1 py-1 hover:bg-zinc-50 hover:rounded-md', editor.isActive('strike') && 'rounded bg-gray-400 text-white')}
             >
             <StrikethroughIcon className='w-3 h-3' />
             </button>
@@ -72,34 +72,34 @@ const Toolbar = ({ editor }: ToolbarProps) => {
                 .toggleCode()
                 .run()
             }
-            className={clsx('px-1 py-1', editor.isActive('code') && 'rounded bg-gray-400 text-white')}
+            className={clsx('px-1 py-1 hover:bg-zinc-50 hover:rounded-md', editor.isActive('code') && 'rounded bg-gray-400 text-white')}
             >
             <CodeBracketIcon className='w-3 h-3' />
             </button>
             <TextLevels editor={editor} />
             <button
                 onClick={() => editor.chain().focus().toggleBulletList().run()}
-                className={clsx('px-1 py-1', editor.isActive('bulletList') && 'rounded bg-gray-400 text-white')}
+                className={clsx('px-1 py-1 hover:bg-zinc-50 hover:rounded-md', editor.isActive('bulletList') && 'rounded bg-gray-400 text-white')}
             >
                 <ListBulletIcon className='w-3 h-3' />
             </button>
             <button
                 onClick={() => editor.chain().focus().toggleOrderedList().run()}
-                className={clsx('px-1 py-1', editor.isActive('orderedList') && 'rounded bg-gray-400 text-white')}
+                className={clsx('px-1 py-1 hover:bg-zinc-50 hover:rounded-md', editor.isActive('orderedList') && 'rounded bg-gray-400 text-white')}
             >
                 <NumberedListIcon className='w-3 h-3' />
             </button>
 
             <button
                 onClick={() => editor.chain().focus().toggleCodeBlock().run()}
-                className={clsx('px-1 py-1', editor.isActive('codeBlock') && 'rounded bg-gray-400 text-white')}
+                className={clsx('px-1 py-1 hover:bg-zinc-50 hover:rounded-md', editor.isActive('codeBlock') && 'rounded bg-gray-400 text-white')}
                 >
                 <CodeBracketSquareIcon className='w-3 h-3' />
             </button>
 
             {/* <button
                 onClick={() => editor.chain().focus().toggleBlockquote().run()}
-                className={clsx('px-1 py-1', editor.isActive('blockquote') && 'rounded bg-gray-400 text-white')}
+                className={clsx('px-1 py-1 hover:bg-zinc-50 hover:rounded-md', editor.isActive('blockquote') && 'rounded bg-gray-400 text-white')}
                 >
                 <TextQuote className='w-3 h-3' />
             </button> */}

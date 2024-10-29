@@ -27,7 +27,9 @@ export const LinkInput = ({ onLink, setOpened }: { onLink(url: string): void; se
                         type="text"
                         name="url"
                         classNames={{
-                            root: 'w-[250px]'
+                            root: 'w-[250px] bg-white p-2 border-zinc-500',
+                            input: 'border border-zinc-100 px-2 text-zinc-600 text-sm focus:border focus:border-sky-600',
+                            label: 'text-zinc-500'
                         }}
                         placeholder="Input a link and press Enter"
                         data-cy="link-input"

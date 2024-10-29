@@ -3,13 +3,14 @@ import { usePathname } from 'next/navigation'
 import { Dialog, Button, TagsInput, Divider } from '@mantine/core'
 import { isEmailValid } from '@/lib/utils/isEmailValid'
 import AccessOptionsSelect from './AccessOptionsSelect'
-import { LinkIcon, ArrowRightIcon } from '@/components/Icons'
+import { LinkIcon, ArrowRightIcon, CheckCircleIcon } from '@/components/Icons'
 import InvitedPeople from './InvitedPeople'
 import showSuccessNotification from '@/lib/utils/notifications/showSuccessNotification'
 import showErrorNotification from '@/lib/utils/notifications/showErrorNotification'
 import { useClickOutside } from '@mantine/hooks'
 import { useIsMobile } from '@/lib/hooks/useIsMoile'
 import ShareDocumentWrapper from './ShareDocumentWrapper'
+import { showNotification } from '@mantine/notifications'
 
 type ShareDocumentProps = {
     opened: boolean
@@ -68,11 +69,6 @@ const ShareDocument = ({ opened, close }: ShareDocumentProps) => {
         } else {
             setLoading(false)
             showErrorNotification({ message: 'Invitation not sent. Please try again later' })
-            // const newGuests = guestEmails.map(email => ({
-            //     email: email,
-            //     access: 'viewer'
-            // }))
-            // setNewGuestEmails(newGuests)
         }
     }
 
@@ -123,7 +119,7 @@ const ShareDocument = ({ opened, close }: ShareDocumentProps) => {
                 <div className='flex flex-col gap-4 px-4 pb-9'>
                     <span className='text-xs text-zinc-700'>People with access</span>
                     <div className='h-[30rem] xs:max-h-64 overflow-y-auto flex flex-col gap-4 pb-4 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:"none"] [scrollbar-width:"none"]'>
-                        {[...people, ...newGuestEmails].map((person) => <InvitedPeople key={person.email} person={person} />)}
+                        {[...newGuestEmails, ...people].map((person) => <InvitedPeople key={person.email} person={person} />)}
                     </div>
                 </div>
 
