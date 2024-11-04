@@ -3,14 +3,13 @@ import { usePathname } from 'next/navigation'
 import { Button, TagsInput, Divider } from '@mantine/core'
 import { isEmailValid } from '@/lib/utils/isEmailValid'
 import AccessOptionsSelect from './AccessOptionsSelect'
-import { LinkIcon, ArrowRightIcon, CheckCircleIcon } from '@/components/Icons'
+import { LinkIcon, ArrowRightIcon } from '@/components/Icons'
 import InvitedPeople from './InvitedPeople'
 import showSuccessNotification from '@/lib/utils/notifications/showSuccessNotification'
 import showErrorNotification from '@/lib/utils/notifications/showErrorNotification'
 import { useClickOutside } from '@mantine/hooks'
 import { useIsMobile } from '@/lib/hooks/useIsMoile'
 import ShareDocumentWrapper from './ShareDocumentWrapper'
-import { showNotification } from '@mantine/notifications'
 
 type ShareDocumentProps = {
     opened: boolean
@@ -120,9 +119,10 @@ const ShareDocument = ({ opened, close }: ShareDocumentProps) => {
 
                 </div>
 
-                <div className='flex flex-col gap-4 px-4 pb-9'>
+                <div className='flex flex-col px-4 pb-9'>
                     <span className='text-xs text-zinc-700'>People with access</span>
-                    <div className='h-[30rem] xs:max-h-64 overflow-y-auto flex flex-col gap-4 pb-4 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:"none"] [scrollbar-width:"none"]'>
+                    {isMobile && <span className='text-xxs text-zinc-400'>You&apos;ll be able to change a guest&apos;s access only when they accept your invitation</span>}
+                    <div className='h-[29rem] xs:max-h-64 overflow-y-auto flex flex-col pt-4 gap-4 pb-4 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:"none"] [scrollbar-width:"none"]'>
                         {[...newGuestEmails, ...people].map((person) => <InvitedPeople key={person.email} person={person} />)}
                     </div>
                 </div>
@@ -130,7 +130,7 @@ const ShareDocument = ({ opened, close }: ShareDocumentProps) => {
             </div>
                 <div className='fixed w-full bg-white left-0 bottom-0'>
 
-                    <Divider orientation='horizontal' className='hidden sm:flex w-1 bg-zinc-300' />
+                    <Divider orientation='horizontal' className='hidden sm:flex border-[0.5px] border-zinc-100' />
 
                     <div className='flex flex-col gap-2 xs:flex-row px-4 py-2 justify-between xs:items-center'>
                         <AccessOptionsSelect />
