@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { ChevronDownIcon } from '@/components/Icons';
 import UserAvatar from '@/components/UserAvatar';
-import { Select } from '@mantine/core'
+import { Select, Tooltip } from '@mantine/core'
 // import { AccessType } from '@/lib/types';
 import capitalize from '@/lib/utils/capitalize'
 
@@ -33,9 +33,21 @@ const InvitedPeople = ({ person: { email, access, invitationStatus} }: Props) =>
             {/* show pending invitations at the top. Accepted/Rejected invitations will be at bottom */}
             {/* All these will come from the backend, when backend is implemented */}
             {invitationStatus !== 'accepted' ?
-                <span className='border border-zinc-50 rounded-full text-xs text-zinc-700 px-4 py-2'>
-                    {capitalize(access)}
-                </span> :
+                <Tooltip
+                    withArrow
+                    arrowSize={8}
+                    multiline
+                    w={200}
+                    label="You'll be able to change a guest's access only when they accept your invitation"
+                    transitionProps={{ transition: 'fade', duration: 300 }}
+                    offset={2}
+                    className='bg-sky-50 text-zinc-600 text-xs leading-5'
+                >
+                    <span className='cursor-default border border-zinc-50 rounded-full text-xs text-zinc-700 px-4 py-2'>
+                        {capitalize(access)}
+                    </span> 
+                </Tooltip>
+                :
                 <Select
                     withCheckIcon={false}
                     classNames={{
