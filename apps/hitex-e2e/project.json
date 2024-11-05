@@ -1,0 +1,9 @@
+{
+  "name": "hitex-e2e",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/hitex-e2e/src",
+  "tags": [],
+  "implicitDependencies": ["hitex"],
+  "// targets": "to see all targets run: nx show project hitex-e2e --web",
+  "targets": {}
+}
