@@ -46,3 +46,4 @@ Thumbs.db
 .next
 out
 /apps/web/.env
+.env
