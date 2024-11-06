@@ -2,7 +2,10 @@
   "name": "@hitex/source",
   "version": "0.0.0",
   "license": "MIT",
-  "scripts": {},
+  "scripts": {
+    "dev:hitex": "npx nx dev hitex",
+    "build:hitex": "npx nx start hitex"
+  },
   "private": true,
   "dependencies": {
     "next": "14.2.3",
