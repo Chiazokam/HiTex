@@ -1,0 +1,45 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "jsx": "preserve",
+    "allowJs": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "noEmit": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "incremental": true,
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
+    "paths": {
+      "@/*": [
+        "apps/web/src/*"
+      ]
+    },
+    "types": [
+      "jest",
+      "node"
+    ]
+  },
+  "include": [
+    "**/*.ts",
+    "**/*.tsx",
+    "**/*.js",
+    "**/*.jsx",
+    "../../apps/hitex/.next/types/**/*.ts",
+    "../../dist/apps/hitex/.next/types/**/*.ts",
+    "next-env.d.ts",
+    ".next/types/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "jest.config.ts",
+    "**/*.spec.ts",
+    "**/*.test.ts"
+  ]
+}
