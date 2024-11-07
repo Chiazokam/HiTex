@@ -1,0 +1,21 @@
+{
+  "name": "hitex",
+  "version": "0.1.0",
+  "private": true,
+  "workspaces": [
+    "packages/hitex-front",
+    "packages/hitex-front"
+  ],
+  "scripts": {
+    "start": "npx nx run-many -t start"
+  },
+  "dependencies": {
+    "next": "14.2.16",
+    "react": "18.3.1",
+    "react-dom": "18.3.1"
+  },
+  "devDependencies": {
+    "@nx/next": "20.0.11",
+    "nx": "20.0.11"
+  }
+}
