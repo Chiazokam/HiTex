@@ -1,9 +1,9 @@
 import React from 'react'
 
-import Editor from '@/components/Editor'
-import Header from '@/components/Header';
-import AuthorBox from '@/components/AuthorBox';
-import MobileNav from '@/components/MobileNav';
+import Editor from '@/components/custom/Editor'
+import Header from '@/components/custom/Header';
+import AuthorBox from '@/components/custom/AuthorBox';
+import MobileNav from '@/components/custom/MobileNav';
 
 const Layout = () => {
 

@@ -3,7 +3,7 @@
 import { type Editor } from "@tiptap/react";
 import { useState } from 'react';
 import { Combobox, InputBase, useCombobox } from '@mantine/core';
-import { ChevronDownIcon } from '@/components/Icons';
+import { ChevronDownIcon } from '@/components/custom/Icons/heroIcons';
 
 type TextLevelsProps = {
     editor: Editor | null

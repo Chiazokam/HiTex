@@ -12,7 +12,7 @@ import { EditorContent, useEditor, BubbleMenu } from '@tiptap/react'
 import StarterKit from '@tiptap/starter-kit'
 import Underline from '@tiptap/extension-underline'
 
-import Toolbar from '@/components/Toolbar/Toolbar'
+import Toolbar from '@/components/custom/Toolbar/Toolbar'
 
 const content = `
 <p>

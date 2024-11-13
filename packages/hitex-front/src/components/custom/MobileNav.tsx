@@ -1,6 +1,6 @@
 import React from "react";
 import { type Editor } from "@tiptap/react";
-import Toolbar from "@/components/Toolbar/Toolbar";
+import Toolbar from "@/components/custom/Toolbar/Toolbar";
 
 type MobileNavProps = {
     editor: Editor | null

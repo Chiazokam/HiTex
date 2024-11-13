@@ -43,7 +43,7 @@ const InvitedPeople = ({ person: { email, access, invitationStatus} }: Props) =>
                     offset={2}
                     className='bg-sky-50 text-zinc-600 text-xs leading-5'
                 >
-                    <span className='cursor-default border border-zinc-50 rounded-full text-xs text-zinc-700 px-4 py-2'>
+                    <span className='cursor-default border border-zinc-50 rounded-full text-xxs text-zinc-700 px-4 py-2'>
                         {capitalize(access)}
                     </span> 
                 </Tooltip>
@@ -52,8 +52,8 @@ const InvitedPeople = ({ person: { email, access, invitationStatus} }: Props) =>
                     withCheckIcon={false}
                     classNames={{
                         wrapper: 'max-w-28',
-                        input: 'border-zinc-50 rounded-full text-xs text-zinc-700 hover:bg-zinc-50 pl-3',
-                        option: 'text-xs'
+                        input: 'border-zinc-50 rounded-full text-xxs text-zinc-700 hover:bg-zinc-50 pl-3',
+                        option: 'text-xxs'
                     }}
                     value={value}
                     onChange={(value) => setValue(value)}
@@ -64,7 +64,7 @@ const InvitedPeople = ({ person: { email, access, invitationStatus} }: Props) =>
                         { value: 'co-owner', label: 'Co-owner' },
                         { value: 'owner', label: 'Owner' },
                     ]}
-                    rightSection={<ChevronDownIcon className='w-3 h-3 text-zinc-700' />}
+                    rightSection={<ChevronDownIcon className='w-2.5 h-2.5 text-zinc-700' />}
                 />
             }
         </div>

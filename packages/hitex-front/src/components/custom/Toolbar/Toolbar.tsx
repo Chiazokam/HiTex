@@ -1,9 +1,9 @@
 import { useState } from 'react'
 import clsx from 'clsx';
 import { type Editor } from "@tiptap/react";
-import { BoldIcon, ItalicIcon, StrikethroughIcon, CodeBracketIcon, ListBulletIcon, NumberedListIcon, UnderlineIcon, CodeBracketSquareIcon } from '@/components/Icons';
-import { TextLevels } from '@/components/TextLevels';
-import { LinkButton } from '@/components/Toolbar/LinkButton';
+import { BoldIcon, ItalicIcon, StrikethroughIcon, CodeBracketIcon, ListBulletIcon, NumberedListIcon, UnderlineIcon, CodeBracketSquareIcon } from '@/components/custom/Icons/heroIcons';
+import { TextLevels } from '@/components/custom/TextLevels';
+import { LinkButton } from '@/components/custom/Toolbar/LinkButton';
 
 type ToolbarProps = {
     editor: Editor | null

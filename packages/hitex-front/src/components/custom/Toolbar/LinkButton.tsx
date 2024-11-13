@@ -1,8 +1,8 @@
 import { Editor } from '@tiptap/react'
 import { Popover } from '@mantine/core'
 import clsx from 'clsx';
-import { LinkIcon } from '@/components/Icons';
-import { LinkInput } from '@/components/Toolbar/LinkInput';
+import { LinkIcon } from '@/components/custom/Icons/heroIcons';
+import { LinkInput } from '@/components/custom/Toolbar/LinkInput';
 import { useState } from 'react';
 
 type LinkButtonProps = {

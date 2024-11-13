@@ -11,6 +11,9 @@ import { createPortal } from 'react-dom'
 import { Surface } from '@/components/ui/Surface'
 import { Toolbar } from '@/components/ui/Toolbar'
 import { Icon } from '@/components/ui/Icon'
+import Editor from '@/components/custom/Editor'
+import Header from '@/components/custom/Header';
+import AuthorBox from '@/components/custom/AuthorBox';
 
 const useDarkmode = () => {
   const [isDarkMode, setIsDarkMode] = useState<boolean>(
@@ -146,9 +149,10 @@ export default function Document({ params }: { params: { room: string } }) {
   )
 
   return (
-    <>
+    <div className='flex flex-col h-screen mt-[64px] px-5 md:px-36 lg:px-60 xl:px-96 py-12 overflow-y-auto'>
       {/* {DarkModeSwitcher} */}
+      <AuthorBox />
       <BlockEditor aiToken={aiToken ?? undefined} hasCollab={hasCollab} ydoc={ydoc} provider={provider} />
-    </>
+    </div>
   )
 }
