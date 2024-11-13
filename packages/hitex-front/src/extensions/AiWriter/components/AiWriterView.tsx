@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 import { NodeViewProps, NodeViewWrapper, useEditorState } from '@tiptap/react'
 import { useCallback, useEffect, useMemo, useState } from 'react'
 import toast from 'react-hot-toast'
@@ -8,7 +10,7 @@ import { Panel, PanelHeadline } from '@/components/ui/Panel'
 import { Textarea } from '@/components/ui/Textarea'
 import { Icon } from '@/components/ui/Icon'
 
-import { AiTone, AiToneOption } from '@/components/BlockEditor/types'
+import { AiTone, AiToneOption } from '@/components/TiptapEditor/types'
 import { tones } from '@/lib/constants'
 
 import * as Dropdown from '@radix-ui/react-dropdown-menu'

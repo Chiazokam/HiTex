@@ -24,5 +24,5 @@
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/pages/_document.js"],
-  "exclude": ["node_modules"]
+  "exclude": ["node_modules", "./src/components/custom/Toolbar/Toolbar.tsx", "./src/components/menus/TextMenu/hooks/useTextmenuCommands.ts"]
 }

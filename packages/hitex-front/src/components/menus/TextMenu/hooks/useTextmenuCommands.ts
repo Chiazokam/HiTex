@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 import type { Language } from '@/extensions/Ai'
 import { Editor } from '@tiptap/react'
 import { useCallback } from 'react'

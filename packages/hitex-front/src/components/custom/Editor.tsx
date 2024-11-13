@@ -67,7 +67,7 @@ const Editor = () => {
 
     const editor = useEditor({
         extensions: [
-          StarterKit,
+          // StarterKit,
           BulletList,
           // ListItem,
           Highlight,
