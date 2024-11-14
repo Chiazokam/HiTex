@@ -11,7 +11,6 @@ import { Sidebar } from '@/components/Sidebar'
 import ImageBlockMenu from '@/extensions/ImageBlock/components/ImageBlockMenu'
 import { ColumnsMenu } from '@/extensions/MultiColumn/menus'
 import { TableColumnMenu, TableRowMenu } from '@/extensions/Table/menus'
-// import { EditorHeader } from './components/EditorHeader'
 import EditorHeader from '@/components/custom/Header'
 import { TextMenu } from '../menus/TextMenu'
 import { ContentItemMenu } from '../menus/ContentItemMenu'
@@ -19,7 +18,7 @@ import { useSidebar } from '@/hooks/useSidebar'
 import * as Y from 'yjs'
 import { TiptapCollabProvider } from '@hocuspocus/provider'
 
-export const BlockEditor = ({
+export const TiptapEditor = ({
   aiToken,
   ydoc,
   provider,
@@ -55,7 +54,7 @@ export const BlockEditor = ({
           editor={editor}
           users={users}
         />
-        <EditorContent editor={editor} className="flex-1  px-0" />
+        <EditorContent editor={editor} className="flex-1" />
         <ContentItemMenu editor={editor} />
         <LinkMenu editor={editor} appendTo={menuContainerRef} />
         <TextMenu editor={editor} />
@@ -67,5 +66,3 @@ export const BlockEditor = ({
     </div>
   )
 }
-
-export default BlockEditor

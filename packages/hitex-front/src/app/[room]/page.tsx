@@ -6,7 +6,7 @@ import { useSearchParams } from 'next/navigation'
 import { useCallback, useEffect, useLayoutEffect, useMemo, useState } from 'react'
 import { Doc as YDoc } from 'yjs'
 
-import { BlockEditor } from '@/components/TiptapEditor'
+import { TiptapEditor } from '@/components/TiptapEditor'
 import { createPortal } from 'react-dom'
 import { Surface } from '@/components/ui/Surface'
 import { Toolbar } from '@/components/ui/Toolbar'
@@ -149,10 +149,10 @@ export default function Document({ params }: { params: { room: string } }) {
   )
 
   return (
-    <div className='flex flex-col h-screen mt-[64px] px-5 md:px-36 lg:px-60 xl:px-96 py-12 overflow-y-auto'>
+    <div className='flex flex-col h-screen mt-16 px-5 md:px-36 lg:px-60 xl:px-80 py-12 overflow-y-auto'>
       {/* {DarkModeSwitcher} */}
       <AuthorBox />
-      <BlockEditor aiToken={aiToken ?? undefined} hasCollab={hasCollab} ydoc={ydoc} provider={provider} />
+      <TiptapEditor aiToken={aiToken ?? undefined} hasCollab={hasCollab} ydoc={ydoc} provider={provider} />
     </div>
   )
 }
