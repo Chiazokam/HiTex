@@ -4,11 +4,7 @@ import { Button, TagsInput, Divider } from '@mantine/core'
 
 const AuthorBox = () => {
     return (
-        <div className="flex flex-col gap-5 mb-6 ml-12">
-            {/* <div className="text-2xl md:text-5xl font-medium tracking-wide leading-tight">
-                Seven Fundamental Design Principles
-            </div> */}
-
+        <div className="flex flex-col gap-5 mx-12">
             <div className="flex items-center gap-4">
                 <UserAvatar image="" name="Dylan Mirror" />
                 <span className="text-xs tracking-wide text-blue-600">Dylan Mirror</span>

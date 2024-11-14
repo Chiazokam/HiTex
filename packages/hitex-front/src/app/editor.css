@@ -1,5 +1,5 @@
 .ProseMirror {
-  @apply pl-12 !max-w-4xl;
+  @apply px-12 !max-w-4xl;
 
   .is-empty::before {
     @apply text-neutral-500 dark:text-neutral-400;

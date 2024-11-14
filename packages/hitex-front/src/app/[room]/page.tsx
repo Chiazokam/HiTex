@@ -13,7 +13,6 @@ import { Toolbar } from '@/components/ui/Toolbar'
 import { Icon } from '@/components/ui/Icon'
 import Editor from '@/components/custom/Editor'
 import Header from '@/components/custom/Header';
-import AuthorBox from '@/components/custom/AuthorBox';
 
 const useDarkmode = () => {
   const [isDarkMode, setIsDarkMode] = useState<boolean>(
@@ -149,12 +148,9 @@ export default function Document({ params }: { params: { room: string } }) {
   )
 
   return (
-    <div className='flex flex-col h-screen overflow-y-auto'>
-      <div className='mt-16 px-5 md:px-36 lg:px-60 xl:px-80 py-12 '>
-        {/* {DarkModeSwitcher} */}
-        <AuthorBox />
-        <TiptapEditor aiToken={aiToken ?? undefined} hasCollab={hasCollab} ydoc={ydoc} provider={provider} />
-      </div>
-    </div>
+    <>
+      {/* {DarkModeSwitcher} */}
+      <TiptapEditor aiToken={aiToken ?? undefined} hasCollab={hasCollab} ydoc={ydoc} provider={provider} />
+    </>
   )
 }
