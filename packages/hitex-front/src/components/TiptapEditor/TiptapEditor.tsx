@@ -18,8 +18,9 @@ import { ContentItemMenu } from '../menus/ContentItemMenu'
 import { useSidebar } from '@/hooks/useSidebar'
 import * as Y from 'yjs'
 import { TiptapCollabProvider } from '@hocuspocus/provider'
+import AuthorBox from '@/components/custom/AuthorBox';
 
-export const BlockEditor = ({
+export const TiptapEditor = ({
   aiToken,
   ydoc,
   provider,
@@ -41,31 +42,29 @@ export const BlockEditor = ({
   return (
     <div className="flex h-full" ref={menuContainerRef}>
       <Sidebar isOpen={leftSidebar.isOpen} onClose={leftSidebar.close} editor={editor} />
-      <div>
-        {/* <EditorHeader
-          editor={editor}
-          collabState={collabState}
-          users={users}
-          isSidebarOpen={leftSidebar.isOpen}
-          toggleSidebar={leftSidebar.toggle}
-        /> */}
+      <div className='relative flex flex-col flex-1 h-full overflow-hidden'>
         <EditorHeader
           isSidebarOpen={leftSidebar.isOpen}
           toggleSidebar={leftSidebar.toggle}
           editor={editor}
           users={users}
         />
-        <EditorContent editor={editor} className="flex-1  px-0" />
-        <ContentItemMenu editor={editor} />
-        <LinkMenu editor={editor} appendTo={menuContainerRef} />
-        <TextMenu editor={editor} />
-        <ColumnsMenu editor={editor} appendTo={menuContainerRef} />
-        <TableRowMenu editor={editor} appendTo={menuContainerRef} />
-        <TableColumnMenu editor={editor} appendTo={menuContainerRef} />
-        <ImageBlockMenu editor={editor} appendTo={menuContainerRef} />
+        <div className='flex w-full justify-center overflow-y-auto'>
+          <div className='flex flex-col lg:max-w-4xl w-full mt-8'>
+            {/* <AuthorBox /> */}
+            <EditorContent editor={editor} className="mt-6" />
+            <ContentItemMenu editor={editor} />
+            <LinkMenu editor={editor} appendTo={menuContainerRef} />
+            <TextMenu editor={editor} />
+            <ColumnsMenu editor={editor} appendTo={menuContainerRef} />
+            <TableRowMenu editor={editor} appendTo={menuContainerRef} />
+            <TableColumnMenu editor={editor} appendTo={menuContainerRef} />
+            <ImageBlockMenu editor={editor} appendTo={menuContainerRef} />
+
+            {/* The citations go here */}
+          </div>
+        </div>
       </div>
     </div>
   )
 }
-
-export default BlockEditor

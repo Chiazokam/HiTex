@@ -23,7 +23,8 @@ type EditorHeaderProps = {
 const Header = ({ isSidebarOpen, toggleSidebar }: EditorHeaderProps) => {
     const [opened, { open, close }] = useDisclosure(false)
     return (
-        <header className='flex border-b fixed z-2 top-0 left-0 w-full shadow-lg border-gray-100 py-5 px-4 sm:px-6 bg-white justify-between h-[64px]'>
+        // <header className='flex border-b fixed z-2 top-0 left-0 w-full shadow-lg border-gray-100 py-5 px-4 sm:px-6 bg-white justify-between h-[64px]'>
+        <header className="flex flex-row items-center justify-between py-4 px-4 sm:px-6 shadow-lg bg-white border-b border-gray-100 dark:bg-black dark:text-white dark:border-neutral-800">
             <div className='flex gap-3 items-center'>
                 {/* <div className='border rounded-full bg-red-100 p-1 border-red-100'>
                     <DocumentTextIcon className='w-4 h-4 text-red-700' />
