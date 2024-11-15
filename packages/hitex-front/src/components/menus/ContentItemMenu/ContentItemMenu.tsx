@@ -45,7 +45,7 @@ export const ContentItemMenu = ({ editor }: ContentItemMenuProps) => {
 
         <Popover.Root open={menuOpen} onOpenChange={setMenuOpen}>
           <Popover.Trigger asChild>
-            <Toolbar.Button>
+            <Toolbar.Button className='px-0'>
               <Icon name="GripVertical" />
             </Toolbar.Button>
           </Popover.Trigger>
