@@ -13,12 +13,6 @@
   }
 }
 
-@layer base {
-  html {
-    @apply font-["Mona Sans"], "Helvetica Neue", Helvetica, Arial, sans-serif;
-  }
-}
-
 html,
 body {
   @apply bg-white text-neutral-900 dark:bg-black dark:text-white;
