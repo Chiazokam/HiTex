@@ -39,13 +39,13 @@ export const ContentItemMenu = ({ editor }: ContentItemMenuProps) => {
       className='ml-4'
     >
       <div className="flex flex-col md:flex-row ml-5 sm:ml-0 items-center">
-        <Toolbar.Button onClick={actions.handleAdd}>
+        {/* <Toolbar.Button onClick={actions.handleAdd}>
           <Icon name="Plus" />
-        </Toolbar.Button>
+        </Toolbar.Button> */}
 
         <Popover.Root open={menuOpen} onOpenChange={setMenuOpen}>
           <Popover.Trigger asChild>
-            <Toolbar.Button>
+            <Toolbar.Button className='px-0'>
               <Icon name="GripVertical" />
             </Toolbar.Button>
           </Popover.Trigger>

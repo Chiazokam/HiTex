@@ -19,7 +19,7 @@ export const TableOfContents = memo(({ editor, onItemClick }: TableOfContentsPro
 
   return (
     <>
-      <div className="mb-2 text-xs font-semibold uppercase text-neutral-500 dark:text-neutral-400">
+      <div className="mb-2 text-sm font-bold uppercase text-neutral-500 dark:text-neutral-400">
         Table of contents
       </div>
       {content.length > 0 ? (
