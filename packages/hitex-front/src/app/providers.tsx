@@ -2,7 +2,7 @@ import { MantineProvider, createTheme } from '@mantine/core'
 import { Notifications } from '@mantine/notifications'
 
 const theme = createTheme({
-  fontFamily: 'Mons Sans, sans-serif',
+  fontFamily: 'Mona Sans, sans-serif',
 })
 
 export function Providers({ children }: { children: React.ReactNode }) {

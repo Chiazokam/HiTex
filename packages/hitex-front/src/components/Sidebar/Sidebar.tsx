@@ -5,7 +5,7 @@ import { Editor } from '@tiptap/react'
 import { Divider } from '@mantine/core'
 import { Toolbar } from '@/components/ui/Toolbar'
 import { Icon } from '@/components/ui/Icon'
-import { ChevronRightIcon } from '@/components/custom/Icons/heroIcons'
+import { ChevronRightIcon, FileTextIcon } from '@/components/custom/Icons'
 import UserAvatar from '@/components/custom/UserAvatar';
 
 export const Sidebar = memo(
@@ -24,7 +24,7 @@ export const Sidebar = memo(
       <div ref={ref} className={windowClassName}>
         <div className="w-full h-full overflow-hidden">
 
-        <nav className='h-full p-2 relative flex flex-col'>
+        <nav className='h-full px-4 pt-4 relative flex flex-col'>
           <div>
             <h1 className='font-black text-2xl'>HAItex</h1>
 
@@ -37,146 +37,23 @@ export const Sidebar = memo(
           </div>
 
             <div className='grow space-y-2 mt-4 overflow-x-hidden overflow-y-auto'>
-              <Toolbar.Button className='w-60 flex gap-2 my-1 px-0.5 py-0.5 hover:bg-zinc-50'>
-                <Icon strokeWidth={1} name="FileText" />
+              {/* TO-DO Fix the size of the file icon when text is not long enough */}
+              <Toolbar.Button className='w-56 flex gap-2 justify-start my-1 px-0.5 py-0.5 hover:bg-zinc-50'>
+                <FileTextIcon className='min-w-3 min-h-3 font-extralight' />
                 <span className='truncate text-zinc-500 font-medium tracking-wide'>Seven Fundamental Design Principles</span>
               </Toolbar.Button>
-              <Toolbar.Button className='w-60 flex gap-2 my-1 px-0.5 py-0.5 hover:bg-zinc-50'>
-                <Icon strokeWidth={1} name="FileText" />
-                <span className='truncate text-zinc-500 font-bold tracking-wide'>Seven Fundamental Design Principles</span>
+              <Toolbar.Button className='w-56 flex gap-2 justify-start my-1 px-0.5 py-0.5 hover:bg-zinc-50'>
+                <FileTextIcon className='w-3 h-3 font-extralight' />
+                <span className='truncate text-zinc-500 font-bold tracking-wide'>Design Principles</span>
               </Toolbar.Button>
-              <Toolbar.Button className='w-60 flex gap-2 my-1 px-0.5 py-0.5 hover:bg-zinc-50'>
-                <Icon strokeWidth={1} name="FileText" />
-                <span className='truncate text-zinc-500 font-medium tracking-wide'>Seven Fundamental Design Principles</span>
+              <Toolbar.Button className='w-56 flex gap-2 justify-start my-1 px-0.5 py-0.5 hover:bg-zinc-50'>
+                <FileTextIcon className='w-3 h-3 font-extralight' />
+                <span className='truncate text-zinc-500 font-medium tracking-wide'>Untitled</span>
               </Toolbar.Button>
-              <Toolbar.Button className='w-60 flex gap-2 my-1 px-0.5 py-0.5 hover:bg-zinc-50'>
-                <Icon strokeWidth={1} name="FileText" />
-                <span className='truncate text-zinc-500 font-medium tracking-wide'>Seven Fundamental Design Principles</span>
+              <Toolbar.Button className='w-56 flex gap-2 justify-start my-1 px-0.5 py-0.5 hover:bg-zinc-50'>
+                <FileTextIcon className='w-3 h-3 font-extralight' />
+                <span className='truncate text-zinc-500 font-medium tracking-wide'>Design Principles</span>
               </Toolbar.Button>
-              {/* <Toolbar.Button className='w-60 flex gap-2 my-1 px-0.5 py-0.5 hover:bg-zinc-50'>
-                <Icon strokeWidth={1} name="FileText" />
-                <span className='truncate text-zinc-500 font-medium'>Seven Fundamental Design Principles</span>
-              </Toolbar.Button>
-              <Toolbar.Button className='w-60 flex gap-2 my-1 px-0.5 py-0.5 hover:bg-zinc-50'>
-                <Icon strokeWidth={1} name="FileText" />
-                <span className='truncate text-zinc-500 font-medium'>Seven Fundamental Design Principles</span>
-              </Toolbar.Button>
-              <Toolbar.Button className='w-60 flex gap-2 my-1 px-0.5 py-0.5 hover:bg-zinc-50'>
-                <Icon strokeWidth={1} name="FileText" />
-                <span className='truncate text-zinc-500 font-medium'>Seven Fundamental Design Principles</span>
-              </Toolbar.Button>
-              <Toolbar.Button className='w-60 flex gap-2 my-1 px-0.5 py-0.5 hover:bg-zinc-50'>
-                <Icon strokeWidth={1} name="FileText" />
-                <span className='truncate text-zinc-500 font-medium'>Seven Fundamental Design Principles</span>
-              </Toolbar.Button>
-              <Toolbar.Button className='w-60 flex gap-2 my-1 px-0.5 py-0.5 hover:bg-zinc-50'>
-                <Icon strokeWidth={1} name="FileText" />
-                <span className='truncate text-zinc-500 font-medium'>Seven Fundamental Design Principles</span>
-              </Toolbar.Button>
-              <Toolbar.Button className='w-60 flex gap-2 my-1 px-0.5 py-0.5 hover:bg-zinc-50'>
-                <Icon strokeWidth={1} name="FileText" />
-                <span className='truncate text-zinc-500 font-medium'>Seven Fundamental Design Principles</span>
-              </Toolbar.Button>
-              <Toolbar.Button className='w-60 flex gap-2 my-1 px-0.5 py-0.5 hover:bg-zinc-50'>
-                <Icon strokeWidth={1} name="FileText" />
-                <span className='truncate text-zinc-500 font-medium'>Seven Fundamental Design Principles</span>
-              </Toolbar.Button>
-              <Toolbar.Button className='w-60 flex gap-2 my-1 px-0.5 py-0.5 hover:bg-zinc-50'>
-                <Icon strokeWidth={1} name="FileText" />
-                <span className='truncate text-zinc-500 font-medium'>Seven Fundamental Design Principles</span>
-              </Toolbar.Button>
-              <Toolbar.Button className='w-60 flex gap-2 my-1 px-0.5 py-0.5 hover:bg-zinc-50'>
-                <Icon strokeWidth={1} name="FileText" />
-                <span className='truncate text-zinc-500 font-medium'>Seven Fundamental Design Principles</span>
-              </Toolbar.Button>
-              <Toolbar.Button className='w-60 flex gap-2 my-1 px-0.5 py-0.5 hover:bg-zinc-50'>
-                <Icon strokeWidth={1} name="FileText" />
-                <span className='truncate text-zinc-500 font-medium'>Seven Fundamental Design Principles</span>
-              </Toolbar.Button>
-              <Toolbar.Button className='w-60 flex gap-2 my-1 px-0.5 py-0.5 hover:bg-zinc-50'>
-                <Icon strokeWidth={1} name="FileText" />
-                <span className='truncate text-zinc-500 font-medium'>Seven Fundamental Design Principles</span>
-              </Toolbar.Button>
-              <Toolbar.Button className='w-60 flex gap-2 my-1 px-0.5 py-0.5 hover:bg-zinc-50'>
-                <Icon strokeWidth={1} name="FileText" />
-                <span className='truncate text-zinc-500 font-medium'>Seven Fundamental Design Principles</span>
-              </Toolbar.Button>
-              <Toolbar.Button className='w-60 flex gap-2 my-1 px-0.5 py-0.5 hover:bg-zinc-50'>
-                <Icon strokeWidth={1} name="FileText" />
-                <span className='truncate text-zinc-500 font-medium'>Seven Fundamental Design Principles</span>
-              </Toolbar.Button>
-              <Toolbar.Button className='w-60 flex gap-2 my-1 px-0.5 py-0.5 hover:bg-zinc-50'>
-                <Icon strokeWidth={1} name="FileText" />
-                <span className='truncate text-zinc-500 font-medium'>Seven Fundamental Design Principles</span>
-              </Toolbar.Button>
-              <Toolbar.Button className='w-60 flex gap-2 my-1 px-0.5 py-0.5 hover:bg-zinc-50'>
-                <Icon strokeWidth={1} name="FileText" />
-                <span className='truncate text-zinc-500 font-medium'>Seven Fundamental Design Principles</span>
-              </Toolbar.Button>
-              <Toolbar.Button className='w-60 flex gap-2 my-1 px-0.5 py-0.5 hover:bg-zinc-50'>
-                <Icon strokeWidth={1} name="FileText" />
-                <span className='truncate text-zinc-500 font-medium'>Seven Fundamental Design Principles</span>
-              </Toolbar.Button>
-              <Toolbar.Button className='w-60 flex gap-2 my-1 px-0.5 py-0.5 hover:bg-zinc-50'>
-                <Icon strokeWidth={1} name="FileText" />
-                <span className='truncate text-zinc-500 font-medium'>Seven Fundamental Design Principles</span>
-              </Toolbar.Button>
-              <Toolbar.Button className='w-60 flex gap-2 my-1 px-0.5 py-0.5 hover:bg-zinc-50'>
-                <Icon strokeWidth={1} name="FileText" />
-                <span className='truncate text-zinc-500 font-medium'>Seven Fundamental Design Principles</span>
-              </Toolbar.Button>
-              <Toolbar.Button className='w-60 flex gap-2 my-1 px-0.5 py-0.5 hover:bg-zinc-50'>
-                <Icon strokeWidth={1} name="FileText" />
-                <span className='truncate text-zinc-500 font-medium'>Seven Fundamental Design Principles</span>
-              </Toolbar.Button>
-              <Toolbar.Button className='w-60 flex gap-2 my-1 px-0.5 py-0.5 hover:bg-zinc-50'>
-                <Icon strokeWidth={1} name="FileText" />
-                <span className='truncate text-zinc-500 font-medium'>Seven Fundamental Design Principles</span>
-              </Toolbar.Button>
-              <Toolbar.Button className='w-60 flex gap-2 my-1 px-0.5 py-0.5 hover:bg-zinc-50'>
-                <Icon strokeWidth={1} name="FileText" />
-                <span className='truncate text-zinc-500 font-medium'>Seven Fundamental Design Principles</span>
-              </Toolbar.Button>
-              <Toolbar.Button className='w-60 flex gap-2 my-1 px-0.5 py-0.5 hover:bg-zinc-50'>
-                <Icon strokeWidth={1} name="FileText" />
-                <span className='truncate text-zinc-500 font-medium'>Seven Fundamental Design Principles</span>
-              </Toolbar.Button>
-              <Toolbar.Button className='w-60 flex gap-2 my-1 px-0.5 py-0.5 hover:bg-zinc-50'>
-                <Icon strokeWidth={1} name="FileText" />
-                <span className='truncate text-zinc-500 font-medium'>Seven Fundamental Design Principles</span>
-              </Toolbar.Button>
-              <Toolbar.Button className='w-60 flex gap-2 my-1 px-0.5 py-0.5 hover:bg-zinc-50'>
-                <Icon strokeWidth={1} name="FileText" />
-                <span className='truncate text-zinc-500 font-medium'>Seven Fundamental Design Principles</span>
-              </Toolbar.Button>
-              <Toolbar.Button className='w-60 flex gap-2 my-1 px-0.5 py-0.5 hover:bg-zinc-50'>
-                <Icon strokeWidth={1} name="FileText" />
-                <span className='truncate text-zinc-500 font-medium'>Seven Fundamental Design Principles</span>
-              </Toolbar.Button>
-              <Toolbar.Button className='w-60 flex gap-2 my-1 px-0.5 py-0.5 hover:bg-zinc-50'>
-                <Icon strokeWidth={1} name="FileText" />
-                <span className='truncate text-zinc-500 font-medium'>Seven Fundamental Design Principles</span>
-              </Toolbar.Button>
-              <Toolbar.Button className='w-60 flex gap-2 my-1 px-0.5 py-0.5 hover:bg-zinc-50'>
-                <Icon strokeWidth={1} name="FileText" />
-                <span className='truncate text-zinc-500 font-medium'>Seven Fundamental Design Principles</span>
-              </Toolbar.Button>
-              <Toolbar.Button className='w-60 flex gap-2 my-1 px-0.5 py-0.5 hover:bg-zinc-50'>
-                <Icon strokeWidth={1} name="FileText" />
-                <span className='truncate text-zinc-500 font-medium'>Seven Fundamental Design Principles</span>
-              </Toolbar.Button>
-              <Toolbar.Button className='w-60 flex gap-2 my-1 px-0.5 py-0.5 hover:bg-zinc-50'>
-                <Icon strokeWidth={1} name="FileText" />
-                <span className='truncate text-zinc-500 font-medium'>Seven Fundamental Design Principles</span>
-              </Toolbar.Button>
-              <Toolbar.Button className='w-60 flex gap-2 my-1 px-0.5 py-0.5 hover:bg-zinc-50'>
-                <Icon strokeWidth={1} name="FileText" />
-                <span className='truncate text-zinc-500 font-medium'>Seven Fundamental Design Principles</span>
-              </Toolbar.Button>
-              <Toolbar.Button className='w-60 flex gap-2 my-1 px-0.5 py-0.5 hover:bg-zinc-50'>
-                <Icon strokeWidth={1} name="FileText" />
-                <span className='truncate text-zinc-500 font-medium'>Seven Fundamental Design Principles</span>
-              </Toolbar.Button> */}
             </div>
 
             <div className="justify-self-end w-full py-2 -px-2 border-t border-zinc-100">
@@ -185,7 +62,7 @@ export const Sidebar = memo(
                   <UserAvatar image='' name='Dylan Mirror' size={18} />
                   <span className='font-extralight text-sm tracking-wide'>Eugene Madueke</span>
                 </div>
-                <ChevronRightIcon className='w-3 h-3 font-extralight justify-self-end cursor-pointer' />
+                <ChevronRightIcon className='w-3 h-3 font-extralight justify-self-end cursor-pointer text-zinc-400' />
               </div>
             </div>
         </nav>

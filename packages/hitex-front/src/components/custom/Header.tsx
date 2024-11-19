@@ -3,7 +3,7 @@
 import React from 'react'
 import { Editor } from '@tiptap/core'
 import { DocumentTextIcon, EllipsisVerticalIcon, ArrowUpOnSquareIcon } from '@/components/custom/Icons/heroIcons';
-import { Share2Icon } from '@/components/custom/Icons/radixIcons';
+import { Share2Icon } from '@/components/custom/Icons';
 import { Divider, Button, Drawer } from '@mantine/core'
 import Contributors from '@/components/custom/Contributors';
 import UserAvatar from '@/components/custom/UserAvatar';
@@ -23,7 +23,7 @@ type EditorHeaderProps = {
 const Header = ({ isSidebarOpen, toggleSidebar }: EditorHeaderProps) => {
     const [opened, { open, close }] = useDisclosure(false)
     return (
-        <header className="z-[100] flex flex-row items-center justify-between py-4 px-4 sm:px-6 shadow-lg bg-white  dark:bg-black dark:text-white dark:border-neutral-800">
+        <header className="z-[100] flex flex-row items-center justify-between py-4 px-4 sm:px-6 bg-white dark:bg-black dark:text-white">
             <div className='flex gap-3 items-center'>
                 {/* <div className='border rounded-full bg-red-100 p-1 border-red-100'>
                     <DocumentTextIcon className='w-4 h-4 text-red-700' />
